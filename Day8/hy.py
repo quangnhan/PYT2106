@@ -12,7 +12,7 @@
 #     add_customer(i)
 
 # print(customers)
-
+n = int(input("Nhập số cần tính giai thừa: "))
 def giaithua(n):
     giai_thua = 1
     if (n ==0 or n ==1 ):
@@ -20,6 +20,16 @@ def giaithua(n):
     else:
         for i in range(2, n +1):
             giai_thua = giai_thua * i
-            return giai_thua
+        return giai_thua
 
-print (giaithua(3))
+
+print ("Giai thừa của", n, "là", giaithua(n))
+
+
+
+def giaiThua(n):
+    if n == 0:
+        return 1
+    return n * giaiThua(n - 1)
+
+print (giaiThua(n))
