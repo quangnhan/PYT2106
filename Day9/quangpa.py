@@ -1,3 +1,4 @@
+from database import Dabatase
 class Product:
     def __init__(self, id, name, price):
         print(self)
@@ -11,5 +12,13 @@ class Product:
 
 
 if __name__ == "__main__":
-    p = Product(1,"Quan", 100)
-    print(p.name)
+    db = Dabatase()
+    
+    list_product_objects = []
+
+    for product in db.list_products:
+        obj = Product(product['id'], product['name'], product['price'])
+        list_product_objects.append(obj)
+
+    for product in list_product_objects:
+        print(product.name)
