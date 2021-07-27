@@ -14,7 +14,7 @@ class Product():
     def get_id(self):
         return self.__id
 
-    def set_id(self):
+    def set_id(self, id):
         self.__id = id
 
     def get_name(self):
@@ -29,6 +29,9 @@ class Product():
     def set_price(self, price):
         self.price = price
 
+    def show_info(self):
+        return(self.__id, self.__name, self.__price)
+
 
 def main():
     db = Dabatase()
@@ -38,7 +41,8 @@ def main():
         list_products_object.append(obj)
 
     for product in list_products_object:
-        print(product.get_name())
+        product.set_id(product.get_id() + 1000)
+        print(product.show_info())
 
 
 if __name__ == "__main__":
