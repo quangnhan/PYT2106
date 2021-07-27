@@ -60,7 +60,7 @@ def main():
             })
 
     myShop = Shop('myShop', list_products_object)
-    print(myShop.get_info())
+    myShop.show()
 
 
 if __name__ == "__main__":
