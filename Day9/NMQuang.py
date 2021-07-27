@@ -1,11 +1,11 @@
 class Product():
     def __init__(self, id, name, price):
 
-        if type(price) != 'float':
+        if type(price) != 'float' or type(id) != 'int':
             print('Wrong format!')
 
         self.id = id
-        self.name = name
+        self.name = str(name)
         self.price = price
 
 
