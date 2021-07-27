@@ -8,8 +8,8 @@ class Product():
         #     print('Wrong format!')
 
         self.__id = id
-        self.name = str(name)
-        self.price = price
+        self.__name = str(name)
+        self.__price = price
 
     def get_id(self):
         return self.__id
@@ -17,11 +17,17 @@ class Product():
     def set_id(self):
         self.__id = id
 
-#     def set_name(self, name):
-#         self.name = name
-# 
-#     def set_price(self, price):
-#         self.price = price
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, name):
+        self.name = name
+
+    def get_price(self):
+        return self.__price
+
+    def set_price(self, price):
+        self.price = price
 
 
 def main():
@@ -32,7 +38,7 @@ def main():
         list_products_object.append(obj)
 
     for product in list_products_object:
-        print(product.name)
+        print(product.get_name())
 
 
 if __name__ == "__main__":
