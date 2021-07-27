@@ -31,16 +31,21 @@ class Product():
         self.price = price
 
     def show_info(self):
-        return(self.__id, self.__name, self.__price)
+        print(self.__id, self.__name, self.__price)
 
 
 class Shop():
     def __init__(self, name, list_products):
-        self.__name = name
-        self.__list_products = list_products
+        self.name = name
+        self.list_products = list_products
 
     def get_info(self):
-        return (self.__name, self.__list_products)
+        return (self.name, self.list_products)
+
+    def show(self):
+        print(self.name)
+        for item in self.list_products:
+            print(f"---------------------\nAmount: {item['amount']}\nAmount sold: {item['amount_sold']}\nProduct: {item['product'].get_name()}")
 
 
 def main():
@@ -55,7 +60,7 @@ def main():
             })
 
     myShop = Shop('myShop', list_products_object)
-    print(myShop.get_info())
+    myShop.show()
 
 
 if __name__ == "__main__":
