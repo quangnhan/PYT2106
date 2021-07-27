@@ -39,7 +39,7 @@ class Shop():
         self.__name = name
         self.__list_products = list_products
 
-    def show_info(self):
+    def get_info(self):
         return (self.__name, self.__list_products)
 
 
@@ -54,14 +54,8 @@ def main():
                 'amount_sold': random.randint(0, 10)
             })
 
-    myShop = []
-
-    for product in list_products_object:
-        order = Shop(f'{product["product"].get_name()}_order', product)
-        myShop.append(order)
-
-    for item in myShop:
-        print(item.show_info())
+    myShop = Shop('myShop', list_products_object)
+    print(myShop.get_info())
 
 
 if __name__ == "__main__":
