@@ -52,10 +52,9 @@ def main():
     db = Dabatase()
     list_products_object = []
     for product in db.list_products:
-        obj = Product(product['id'], product['name'], product['price'])
         list_products_object.append({
                 'amount': random.randint(10, 100),
-                'product': obj,
+                'product': Product(product['id'], product['name'], product['price']),
                 'amount_sold': random.randint(0, 10)
             })
 
