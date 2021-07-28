@@ -30,7 +30,7 @@ class Product():
     def set_price(self, price):
         self.price = price
 
-    def show_info(self):
+    def show(self):
         print(self.__id, self.__name, self.__price)
 
 
