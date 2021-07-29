@@ -27,12 +27,21 @@ class Product():
     def get_info(self):
         print(f'Id = {self.__id}, Name = {self.__name}, Price = {self.__price}')
 
-#   def set_name(self):
-#        self.__price =
+#   def set_price(self):
+#        self.__price = 
 class Shop():
     def __init__(self, name, list_products):
         self.__name = name
         self.__list_products = list_products
+
+    def get_info(self):
+        return(self.name, self.list_products)
+
+    def show(self):
+#        print(self.name)
+        for item in self.list_products:
+            print('------------\n')
+            print(f"Amount: {item['amount']}, Product:{item['product'].get_name()} , Sold: {item['sold_amount']}")
 
 def main():
     db = Dabatase()
@@ -43,11 +52,11 @@ def main():
         list_products_object.append({
             "amount": 14,
             "product": obj,
-            "sold_amount": 0,
+            "sold_amount": 0
         })
 
-    for product in list_products_object:
-       print(product.obj())
+    ceeShop = Shop('ceeShop', list_products_object)
+    ceeShop.show()
 
 if __name__ == "__main__":
     main()
