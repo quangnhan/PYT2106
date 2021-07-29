@@ -4,6 +4,9 @@ class Peguin(Animal):
     def __init__(self, name, weight, height):
         super().__init__(name, weight, height)
 
+    def show(self):
+        print(f"Agent {self._name}")
+
 if __name__ == "__main__":
     peguin = Peguin("Loco", 50, 40)
     peguin.show()
