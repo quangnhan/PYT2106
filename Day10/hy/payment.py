@@ -4,8 +4,8 @@ class Payment:
     def __init__(self,pay):
         self.pay = pay
 
-    def charge(self,money):
-        self.pay.chage(money)
+    def charge(self, money):
+        self.pay.charge(money)
 
 
 if __name__ == "__main__":
