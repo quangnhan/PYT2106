@@ -65,3 +65,7 @@ if __name__ == "__main__":
     momo = Momo("0919147526")
     pay = Payment(momo)
     pay.charge("500000")
+
+    vietcom = Vietcombank("0909489521")
+    pay = Payment(vietcom)
+    pay.charge("350000")
