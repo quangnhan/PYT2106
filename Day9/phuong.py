@@ -1,3 +1,4 @@
+from _typeshed import Self
 from os import name
 from database import Dabatase
 
@@ -30,8 +31,8 @@ class Product():
 #        self.__price =
 class Shop():
     def __init__(self, name, list_products):
-        self.name = name
-        self.list_products = list_products
+        self.__name = name
+        self.__list_products = list_products
 
 def main():
     db = Dabatase()
