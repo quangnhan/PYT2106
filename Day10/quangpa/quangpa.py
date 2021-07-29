@@ -17,7 +17,8 @@
 #     dog = Dog("meo", 30, 50, "đỏ", "becge")
 #     dog.show()
 
-from quangpa_momo import Momo
+from momo import Momo
+from ACB import ACB
 class Payment:
     def __init__(self, payment):
         self.payment = payment
@@ -28,4 +29,8 @@ if __name__ == '__main__':
     momo = Momo("12345678")
     pay = Payment(momo)
     pay.charge("10000")
+
+    ACB = ACB("097854652")
+    pay = Payment(ACB)
+    pay.charge("35000")
 
