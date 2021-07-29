@@ -13,11 +13,11 @@ class Payment:
 def main():
     mufg = Mufg('0909090909')
     payMufg = Payment(mufg)
-    payMufg .charge(200000)
+    payMufg.charge(200000)
 
     mizuho = Mizuho('0909090908')
     payMizuho = Payment(mizuho)
-    payMizuho .charge(300000)
+    payMizuho.charge(300000)
 
 
 if __name__ == "__main__":
