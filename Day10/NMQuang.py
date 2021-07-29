@@ -19,6 +19,9 @@ class Cat(Animal):
     def get_colour(self):
         return self.colour
 
+    def shout(self):
+        print('Meow~~!')
+
 
 def main():
     myCat = Cat('Nyan', 2, 50, 5, 'Golden')
@@ -26,6 +29,7 @@ def main():
     print(myCat.get_height())
     print(myCat.get_age())
     print(myCat.get_colour())
+    myCat.shout()
     print(myCat.show())
 
 
