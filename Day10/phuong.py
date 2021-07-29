@@ -5,7 +5,10 @@ class Peguin(Animal):
         super().__init__(name, weight, height)
 
     def show(self):
-        print(f"Agent {self._name}")
+        print(f"Agent: {self._name}")
+
+    def set_name(self, name):
+        self._name = name
 
 if __name__ == "__main__":
     peguin = Peguin("Loco", 50, 40)
