@@ -1,3 +1,4 @@
+from BIDV import BIDV
 from Vietcombank import Vietcombank
 from Momo import Momo
 
@@ -18,3 +19,7 @@ if __name__ == '__main__':
     vcb = Vietcombank("0123456789")
     pay = Payment(vcb)
     pay.charge("96000")
+
+    BID = BIDV("0123456789")
+    pay = Payment(BID)
+    pay.charge("100000")
