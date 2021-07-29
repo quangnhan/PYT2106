@@ -16,14 +16,27 @@ class Product :
     def set_id(self, id):
         self.__id = id
 
+    def show_product(self):
+        # for product in self.db_database:
+        #     print(product)
+        return(self.__id, self.name, self.price)
+
+class Shop:
+    def __init__(self, name_shop, list_products):
+        self.name_shop = name_shop
+        self.list_products = list_products
 
 if __name__ == '__main__':
     db = Dabatase()
     db_database = []
     for products in db.list_products:
-        p = Product(products['id'], products['name'], products['price'])
-        db_database.append(p)
-
-    for product in db_database:
-        print(product.get_id())
-        # print(product.__id)
+        obj = Product(products['id'], products['name'], products['price'])
+        db_database.append({
+            'amount': 25,
+            'product': obj,
+            'amount_sold': 0
+        })
+    # for product in db_database:
+    #     print(product['product'].show_shop())
+    #     # print(product.__id)
+    shoppe = Shop('The thao', db_database)
