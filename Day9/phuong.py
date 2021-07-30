@@ -37,12 +37,12 @@ class Shop():
         return(self.name, self.list_products)
 
     def show(self):
-#        print(self.name)
+        print(self.name)
         for item in self.list_products:
             print('------------\n')
             print(f"Amount: {item['amount']}, Product:{item['product'].get_name()} , Sold: {item['sold_amount']}")
 
-def main():
+if __name__ == "__main__":
     db = Dabatase()
     list_products_object = []
 
@@ -56,6 +56,3 @@ def main():
 
     ceeShop = Shop('ceeShop', list_products_object)
     ceeShop.show()
-
-if __name__ == "__main__":
-    main()
