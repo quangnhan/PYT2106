@@ -1,34 +1,21 @@
-'''from animal import Animal
+from animal import Animal
 
 class Peguin(Animal):
-    def __init__(self, name, weight, height, leg, color):
+    def __init__(self, name, weight, height, age):
         super().__init__(name, weight, height)
-        self.leg = leg
-        self.color = color
+        self.age: int = age
+        
 
-    def show(self):
-        print(f"Agent: {self._name}")
+    # def get_name(self):
+    #     return self._name
 
-    def set_name(self, name):
-        self._name = name
+    def showInfo(self):
+        print(f'Name: {self._name}\nWeight: {self._weight}\nHeight: {self._height}\nAge: {self.age}')
 
-    def show(self):
-        print(f"Agent: {self._name}")
-
-    def get_leg(self):
-        return self.leg
-
-    def get_color(self):
-        return self.color
-
+    def shout(self):
+        print('Fight me!')
 
 if __name__ == "__main__":
-    p1 = Peguin("Loco", 50, 40, 2, "pink")
-    #p1.show()
-    p1(Peguin.get_leg())
-    p1(Peguin.get_colour())'''
-
-
-
-
-
+     myPeguin = Peguin('Loco', 30, 40, 5)
+     print(myPeguin.showInfo())
+     myPeguin.shout()
