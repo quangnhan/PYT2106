@@ -24,9 +24,16 @@ for line in open('Day8/data.txt','r').read().split('\n'):
 print(custommer)
 '''
 
+#get data server
 data = get_server_data()
 
 for line in getdata(data):
     custommer.append(line)
 print(custommer)
 
+#đệ quy
+def factorial(num):
+    if num ==0:
+        return 1
+    return num * factorial(num-1)
+print(factorial(5))
