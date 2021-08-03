@@ -1,8 +1,8 @@
 class Animal:
     def __init__(self, name, weight, height):
-        self.__name = name
-        self.__weight = weight
-        self.__height = height
+        self._name = name
+        self._weight = weight
+        self._height = height
 
     def get_name(self):
         return self.__name
