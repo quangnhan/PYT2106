@@ -1,0 +1,3 @@
+1) Tạo class Shop, class Product như ở Day 9
+2) Tạo class Order để lưu thông tin khách hàng mua hàng và shop chuyển hàng
+3) Có thể truy cập lịch sử mua hàng của khách từ class Order
