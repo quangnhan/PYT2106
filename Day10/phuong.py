@@ -15,7 +15,15 @@ class Peguin(Animal):
     def shout(self):
         print('Fight me!')
 
+    def set_name(self, name):
+        self._name = name
+
+    def swim(self):
+        print ('Can swim and dive in cirtain time!')
+
 if __name__ == "__main__":
      myPeguin = Peguin('Loco', 30, 40, 5)
-     print(myPeguin.showInfo())
      myPeguin.shout()
+     print(myPeguin.set_name('Vova'))
+     print(myPeguin.showInfo())
+     myPeguin.swim()
