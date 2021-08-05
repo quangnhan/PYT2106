@@ -11,25 +11,21 @@
 #         for item in self.list_products:
 #             print(f'---------------\nAmount')
 
-#Initial list
-res = []
+import math
 
-# Input lengths
-lengths = int(input('nhap so luong chuoi: '))
+a = int(input())
+b = int(input())
+c = int(input())
 
-# Add element
-for i in range(lengths):
-# Input elements
-    n = int(input('nhap so trong chuoi:'))
-    res.append(n)
+def alpha(a, b, c):
+    alpha = float(math.acos((a**2 + b**2- c**2)/2*a*b))
+    return alpha
 
-
-def evenNum(res):
-    dap_an  = []
-    for v in res:
-        if v % 2 == 0:
-            dap_an.append(v)
-    return dap_an
-
-print(evenNum(res))
-
+if a+b >= c or b+c >= a or a+c >= b:
+    if a == b and b == c and c == a:
+        print("Equilateral triangle")
+    if a == b or a == c or b == c:
+        alpha != 60
+        print("Isosceles triangle")
+    if a != b and a != c and c != b:
+        print("Scalene triangle")
