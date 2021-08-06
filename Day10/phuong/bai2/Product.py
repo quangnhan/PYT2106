@@ -1,4 +1,4 @@
-from Day10.phuong.bai2.Shop import Shop
+from Shop import Shop
 import random
 from database import Dabatase
 
