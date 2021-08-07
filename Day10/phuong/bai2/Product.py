@@ -1,6 +1,6 @@
-from Shop import Shop
 import random
-from database import Dabatase
+from database import Database
+from pprint import pprint
 
 
 class Product:
@@ -31,7 +31,7 @@ class Product:
         print(f'ID = {self._id}, Name = {self._name}, Size = {self.size}, Colour = {self.colour}, Price = {self._price}')
 
 if __name__ == "__main__":
-    db = Dabatase
+    db = Database
     list_products_object = []
     for product in db.list_products:
         list_products_object.append({
@@ -39,6 +39,3 @@ if __name__ == "__main__":
             'product': Product(product['id'], product['name'], product['size'],product['colour'],product['price']),
             'amount_sold': random.randint(0,100)
         })
-
-    myShop = Shop('myShop', list_products_object)
-    myShop.get_info()

@@ -1,42 +1,29 @@
-# import math
-
-# a = int(input())
-# b = int(input())
-# c = int(input())
-
-# def alpha(a, b, c):
-#     alpha = float(math.acos((a**2 + b**2- c**2)/2*a*b))
-#     return alpha
-
-# if a+b >= c or b+c >= a or a+c >= b:
-#     if a == b and b == c and c == a:
-#         # alpha == 60
-#         print("Equilateral triangle")
-#     if a == b or a == c or b == c:
-#         # alpha != 60
-#         print("Isosceles triangle")
-#     if a != b and a != c and c != b:
-#         print("Scalene triangle")
-
-from database import Dabatase
-
+from database import Database
+from Product import Product
+from pprint import pprint
 
 class Shop:
-    def __init__(self, name, list_products):
-        self.name = name
+    def __init__(self, id, name, size, colour, price, list_products):
+        super().__init__(id, name, size, colour, price)
         self.list_products = list_products
 
-    def get_name(self):
-        return self.name
-
-    def get_info(self):
-        print (self.name, self.list_products):
+    def show(self):
         for item in self.list_products:
-            print(f'---------------\nAmount')
-            print(f"Amount: {item['amount']}, Product: {item['product'].get_name()},Sold: {item['sold_amount']}")
+            print("--------------\n")
+            pprint(f"Amount: {item['amount']}, Sold: {item['sold_amount']}")
+            item["product"].show()
+
+class Order(Shop):
+    def __init__(self, id, name, size, colour, price, order):
+        super().__init__(id, name, size, colour, price)
+        self.order = order
+
+    def get_order(self):
+        for 
 
 if __name__ == "__main__":
-    db = Dabatase
-    list_product_object = []
+    db = Database()
+    list_products_object = []
 
-    
+    for product in db.list_products:
+        obj = Product(product['id'], product['name'],product['size'], product['colour'], product['price'])
