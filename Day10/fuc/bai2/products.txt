@@ -1,0 +1,5 @@
+1,Ao thun,200000
+2,Quan jean,100000
+3,Quan the thao,150000
+4,Ao khoan,120000
+5,Ao ba lo,160000
