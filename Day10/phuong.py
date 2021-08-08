@@ -1,4 +1,4 @@
-'''from animal import Animal
+from animal import Animal
 
 class Peguin(Animal):
     def __init__(self, name, weight, height, leg, color):
@@ -26,9 +26,4 @@ if __name__ == "__main__":
     p1 = Peguin("Loco", 50, 40, 2, "pink")
     #p1.show()
     p1(Peguin.get_leg())
-    p1(Peguin.get_colour())'''
-
-
-
-
-
+    p1(Peguin.get_colour())
