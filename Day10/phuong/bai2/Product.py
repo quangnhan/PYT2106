@@ -1,34 +1,24 @@
+<<<<<<< HEAD
+from database import*
+=======
 from database import Database
 from pprint import pprint
 
+>>>>>>> 7cb32eb69080b4c19af8ba2145bb53959bbaae38
 
 class Product:
-    # count = 0
+    list_of_products = []
     def __init__(self, id, name, size, colour, price):
-        self._id = id
-        self._name = name
-        self.size = size
+        self.id = id
+        self.name = name
+        self.size: str(size)
         self.colour = colour
-        self._price = price
+        self.price = price
 
-    def get_id(self):
-        return self._id
-
-    def set_id(self, new_id):
-        self._id = new_id
-
-    def get_name(self):
-        return self._name
-
-    def set_name(self, new_name):
-        self._name = new_name
-
-    def set_price(self, new_price):
-        self._price = new_price
-
-    def get_info(self):
-        print(f'ID = {self._id}, Name = {self._name}, Size = {self.size}, Colour = {self.colour}, Price = {self._price}')
-
+<<<<<<< HEAD
+    def show(self):
+        print(f'id: {self.id}\n name: {self.name}\n size: {self.size}\n colour: {self.colour}\n price: {self.price}\n')
+=======
 if __name__ == "__main__":
     db = Database
     list_products_object = []
@@ -38,3 +28,4 @@ if __name__ == "__main__":
             'product': Product(product['id'], product['name'], product['size'],product['colour'],product['price']),
             'amount_sold': 0
         })
+>>>>>>> 7cb32eb69080b4c19af8ba2145bb53959bbaae38
