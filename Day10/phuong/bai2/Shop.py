@@ -1,29 +1,30 @@
-from database import Database
+from database import Database2
 from Product import Product
-from pprint import pprint
 
 class Shop:
-    def __init__(self, id, name, size, colour, price, list_products):
-        super().__init__(id, name, size, colour, price)
-        self.list_products = list_products
+    def __init__(self, name, products, cost):
+        self.name = name
+        self.products = products
+        self.cost = cost
 
-    def show(self):
-        for item in self.list_products:
+    def show_all_products(self):
+        for item in self.products:
             print("--------------\n")
-            pprint(f"Amount: {item['amount']}, Sold: {item['sold_amount']}")
+            print(f"Amount: {item['amount']}, Sold: {item['sold_amount']}")
             item["product"].show()
 
-class Order(Shop):
-    def __init__(self, id, name, size, colour, price, order):
-        super().__init__(id, name, size, colour, price)
-        self.order = order
+if __name__ == "__name__":
+    db = Database2
 
-    def get_order(self):
-        for 
-
-if __name__ == "__main__":
-    db = Database()
     list_products_object = []
 
     for product in db.list_products:
-        obj = Product(product['id'], product['name'],product['size'], product['colour'], product['price'])
+        obj = Product(product['id'], product['name'], product['price'])
+        list_products_object.append({
+            "amount": 10,
+            "product" : obj,
+            "sold_amount" : 1
+        })
+
+    xxx_shop = Shop("Xxx Shop", list_products_object)
+    xxx_shop.show_all_products()

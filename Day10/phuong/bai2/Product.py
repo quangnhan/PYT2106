@@ -1,4 +1,3 @@
-import random
 from database import Database
 from pprint import pprint
 
@@ -35,7 +34,7 @@ if __name__ == "__main__":
     list_products_object = []
     for product in db.list_products:
         list_products_object.append({
-            'amount' : random.randint(1, 100),
+            'amount' : 69,
             'product': Product(product['id'], product['name'], product['size'],product['colour'],product['price']),
-            'amount_sold': random.randint(0,100)
+            'amount_sold': 0
         })
