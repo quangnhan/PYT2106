@@ -11,6 +11,6 @@ class CSV:
             print(row)
 
 if __name__ == "__main__":
-    path = f'{os.getcwd()}\Day11\data\data.csv'
+    path = f'{os.getcwd()}/Day11/data/file.csv'
     csv_file = CSV(path)
     csv_file.show()
