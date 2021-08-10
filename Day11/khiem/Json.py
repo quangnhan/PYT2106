@@ -8,6 +8,6 @@ class Json:
         print(self.json_path.read())
 
 if __name__ == '__main__':
-    path = (f'{os.getcwd()}/Day11/data/data.txt')
+    path = f'{os.getcwd()}/Day11/data/data.txt'
     read = Json(path)
     read.show()
