@@ -1,5 +1,6 @@
 import PyPDF2
-import os
+from pathlib import Path
+
 
 class PDF:
     def __init__(self, path):
@@ -9,7 +10,12 @@ class PDF:
         pdf_data = self.reader.getPage(0)
         print(pdf_data.extractText())
 
+
+def main():
+    path = Path.cwd() / 'Day11' / 'data' / 'data.pdf'
+    file = PDF(path)
+    file.show()
+
 if __name__ == "__main__":
-    path = f'{os.getcwd()}/Day11/data/data.pdf'
-    excel = PDF(path)
-    excel.show()
+    main()
+

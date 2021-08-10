@@ -14,4 +14,3 @@ if __name__ == "__main__":
     path = f'{os.getcwd()}/Day11/data/data.xls'
     excel = Excel(path)
     excel.show()
-
