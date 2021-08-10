@@ -30,7 +30,7 @@ def main():
     # path = Path.cwd() / 'Day11' / 'data' / 'data.txt'
     # path = Path.cwd() / 'Day11' / 'data' / 'data.csv'
     # path = Path.cwd() / 'Day11' / 'data' / 'data.pdf'
-    path = Path.cwd() / 'Day11' / 'data' / 'data.xls'
+    path = Path.cwd() / 'Day11' / 'NMQuang' / 'data' / 'data.xls'
     table = [
         ["Id", "Name", "Age"],
         ["1", "Nhan", "26"],
