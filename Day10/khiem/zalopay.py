@@ -12,5 +12,4 @@ if __name__ == '__main__':
     bidv = Bidv("5555555")
     zpay = Zalopay(bidv)
     zpay = Zalopay(tpbank)
-    
     zpay.charge('1000')

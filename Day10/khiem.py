@@ -11,18 +11,19 @@ class Chicken(Animal):
 
     def rating_animal(self,age, rank_number):
         if rank_number ==1:
-            print(f'Wellcom {self._name} the Champion with age {age}')
+            print(f'Wellcom {self._name} the Champion with age {self.age}')
         else:
             print(f'The {self._name} is not champion')
 
-
-
     def shout(self):
         print(' O O O O O O O O')
+
+
 
 if __name__ == '__main__':
     chicken = Chicken('chiquaqua', 10, 20, 1, 1)
     chicken.show()
     chicken.rating_animal(2,2)
     chicken.shout()
+    
     
