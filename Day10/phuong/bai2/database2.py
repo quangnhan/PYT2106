@@ -1,4 +1,3 @@
-from Day10.phuong.bai2.Product import Product
 import os
 
 class Database2:
@@ -23,9 +22,9 @@ class Database2:
 #     print(db.list_products)
 
     def __init__(self):
-        f = open(f'{os.getcwd()}\Day10\\phuong\\bai2\\Inventory.txt', 'r')
+        f = open(f'{os.getcwd()}/Day10/phuong/bai2/Inventory.txt', 'r')
 
-        for item in f.readline():
+        for item in f.readlines():
             item_contribution = item.split(',')
             self.list_inventory.append({
                 'id' : item_contribution[0],
@@ -36,4 +35,5 @@ class Database2:
             })
 
 if __name__ == "__main__":
-    db = Database2
+    db = Database2()
+    print(db.list_inventory)
