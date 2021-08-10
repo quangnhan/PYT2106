@@ -22,4 +22,4 @@ if __name__ == "__main__":
     path = f'{os.getcwd()}/Day11/data/data.xls'
 
     file_reaeder = FileReader(path)
-    file_reaeder.show()
+    # file_reaeder.show()
