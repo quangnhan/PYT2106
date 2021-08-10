@@ -1,5 +1,6 @@
-import os
+from pathlib import Path
 import csv
+
 
 class CSV:
     def __init__(self, path):
@@ -10,7 +11,12 @@ class CSV:
         for row in self.csv:
             print(row)
 
+
+def main():
+    path = Path.cwd() / 'Day11' / 'data' / 'data.csv'
+    file = CSV(path)
+    file.show()
+
 if __name__ == "__main__":
-    path = f'{os.getcwd()}\Day11\data\data.csv'
-    csv_file = CSV(path)
-    csv_file.show()
+    main()
+
