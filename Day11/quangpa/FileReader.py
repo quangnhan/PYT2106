@@ -1,10 +1,14 @@
 import os
 from Json import Json
 from CSV import CSV
+from Excel import Excel
+from PDF import PDF
 class FileReader:
     __file_class = {
         'txt': Json,
         'csv': CSV,
+        'xls': Excel,
+        'pdf': PDF,
     }
     def __init__(self,path):
         _,file_type = path.split('.')
@@ -14,6 +18,8 @@ class FileReader:
 
 if __name__ == '__main__':
     #path = f'{os.getcwd()}\Day11\data\data.txt'
-    path = f'{os.getcwd()}\Day11\data\data.csv'
+    #path = f'{os.getcwd()}\Day11\data\data.csv'
+    #path = f'{os.getcwd()}/Day11/data/data.xls'
+    path = f'{os.getcwd()}/Day11/data/data.pdf'
     file_reader = FileReader(path)
     file_reader.show()
