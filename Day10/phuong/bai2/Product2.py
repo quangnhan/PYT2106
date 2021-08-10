@@ -9,4 +9,4 @@ class Product:
         self.price = price
 
     def show(self):
-        pprint(f"id: {self.id}\n name: {self.name}\n size: {self.size}\n colour: {self.colour}\n price: {self.price}")
+        print(f"id: {self.id}\n name: {self.name}\n size: {self.size}\n colour: {self.colour}\n price: {self.price}")
