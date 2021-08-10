@@ -3,4 +3,4 @@ class Bidv:
         self.phone = phone
     
     def charge(self,money):
-        print(f'Bidv charge{money} with phone number {self.phone}')
+        print(f'Bidv charge {money} with phone number {self.phone}')
