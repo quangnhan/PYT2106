@@ -1,5 +1,4 @@
 import os
-
 class Json:
     def __init__(self,path):
         self.json_file = open(path,'r')
