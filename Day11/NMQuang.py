@@ -9,8 +9,10 @@ class Json:
 
 def main():
     cwd = Path(__file__).parent.resolve()
-    f = open(cwd / "data" / "data.txt")
-    print(f.readline())
+    file = Json(cwd / 'data' / 'data.txt')
+    # f = open(cwd / "data" / "data.txt")
+    # print(f.readline())
+    file.show()
 
 if __name__ == "__main__":
     main()
