@@ -3,12 +3,9 @@ import PyPDF2
 
 class PDF:
     def __init__(self, path):
-        pdf = open(path, 'rb')
-        pdfReader = PyPDF2.PdfFileReader(pdf)
-        self.pageObj = pdfReader.getPage(0)
+        self.pdf = open(path, 'rb')
     def show(self):
-        print(self.pageObj.extractText())
-
+        print(self.pdf.read())
 if __name__ == "__main__":
     path = f'{os.getcwd()}/Day11/data/data.pdf'
     pdf = PDF(path)
