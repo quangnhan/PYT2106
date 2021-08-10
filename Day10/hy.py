@@ -32,13 +32,6 @@
 
 
 
-class Momo:
-    def __init__(self, phone):
-        self.phone = phone
-
-    def chage(self,money):
-        self.money = money
-        print(f"Momo chage money: {self.money}")
 
 
 
@@ -53,19 +46,3 @@ class Vietcombank:
 
 
 
-class Payment:
-    def __init__(self,pay):
-        self.pay = pay
-
-    def charge(self,money):
-        self.pay.chage(money)
-
-
-if __name__ == "__main__":
-    momo = Momo("0919147526")
-    pay = Payment(momo)
-    pay.charge("500000")
-
-    vietcom = Vietcombank("0909489521")
-    pay = Payment(vietcom)
-    pay.charge("350000")
