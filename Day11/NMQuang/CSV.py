@@ -1,18 +1,22 @@
 from pathlib import Path
+import csv
 
 
-class Json:
+class CSV:
     def __init__(self, path):
-        self.json_file = open(path, 'r')
+        f = open(path)
+        self.csv = csv.reader(f, delimiter=',')
 
     def show(self):
-        print(self.json_file.read())
+        for row in self.csv:
+            print(row)
 
 
 def main():
     path = Path.cwd() / 'Day11' / 'data' / 'data.csv'
-    file = Json(path)
+    file = CSV(path)
     file.show()
 
 if __name__ == "__main__":
     main()
+
