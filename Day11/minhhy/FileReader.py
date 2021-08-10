@@ -17,8 +17,8 @@ class FileReader:
         self.file_reader.show()
 
 if __name__ == "__main__":
-    # p = f'{os.getcwd()}/data/file.txt'
-    p = f'{os.getcwd()}/data/file.csv'
+    p = f'{os.getcwd()}/Day11/data/data.txt'
+    # p = f'{os.getcwd()}/Day11/data/data.csv'
 
     file_reader = FileReader(p)
     file_reader.show()
