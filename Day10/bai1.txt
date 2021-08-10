@@ -1,4 +1,0 @@
-1) Viết class về 1 con vật bất kì kế thừa từ Animal
-2) Thêm vào ít nhất 2 attribute mới
-3) Thêm vào ít nhất 3 function mới
-4) Overwrite ít nhất 1 function

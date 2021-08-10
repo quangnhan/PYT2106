@@ -5,10 +5,10 @@ class Animal:
         self._height = height
 
     def get_name(self):
-        return self.__name
+        return self._name
 
     def show(self):
-        print(f"This is {self.__name} with weight={self.__weight} and height={self.__height}")
+        print(f"This is {self._name} with weight={self.__weight} and height={self.__height}")
 
     def shout(self):
         print("rrrrrrrrrrrr")

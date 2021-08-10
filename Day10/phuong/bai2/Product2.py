@@ -1,7 +1,6 @@
-from database import*
 
 class Product:
-    list_of_products = []
+    # count = 0
     def __init__(self, id, name, size, colour, price):
         self.id = id
         self.name = name
@@ -10,4 +9,4 @@ class Product:
         self.price = price
 
     def show(self):
-        print(f'id: {self.id}\n name: {self.name}\n size: {self.size}\n colour: {self.colour}\n price: {self.price}\n')
+        print(f"id: {self.id}\n name: {self.name}\n size: {self.size}\n colour: {self.colour}\n price: {self.price}")
