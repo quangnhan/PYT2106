@@ -10,8 +10,8 @@ class Json:
 
 
 def main():
-    cwd = Path(__file__).parent.resolve()
-    file = Json(cwd / 'data' / 'data.txt')
+    path = Path.cwd() / 'Day11' / 'data' / 'data.csv'
+    file = Json(path)
     file.show()
 
 if __name__ == "__main__":
