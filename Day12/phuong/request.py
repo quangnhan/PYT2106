@@ -18,14 +18,14 @@ class Server:
 
     def create_user(self):
         data = ({})
-        url = f"{self.__url}"
+        url = f"{self.__url}/fruit_name"
         response = requests.post(url, data=data)
         data = response.json()
         return
 
     def edit_user(self, edit_data):
         self.edit_data = edit_data
-        response = requests.put(f"{self.__url}", data = edit_data)
+        response = requests.put(f"{self.__url}/fruit_name", data = edit_data)
         print(response)
         return
 

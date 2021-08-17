@@ -1,5 +1,5 @@
 import smtplib, ssl
-
+from request import Server
 
 class Gmail:
 
@@ -17,10 +17,17 @@ class Gmail:
 
 
 if __name__ == "__main__":
-    email = Gmail()
-    receiver_mail = "luckyteddy96@gmail.com"
-    message = """\
-    Subject: Hi there
+    server = Server
+    users = server.get_user()
 
-    This message is sent from Python."""
-    email.send_mail(receiver_mail, message)
+    email = Gmail()
+    for user in users:
+        email.Congratz(user["name"], user["email"])
+
+        
+    # receiver_mail = "luckyteddy96@gmail.com"
+    # message = """\
+    # Subject: Hi there
+
+    # This message is sent from Python."""
+    # email.send_mail(receiver_mail, message)
