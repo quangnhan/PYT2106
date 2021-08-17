@@ -2,33 +2,33 @@ import requests
 
 
 class Server:
-    __url = f'https://611ba87422020a00175a461c.mockapi.io/users'
+    __url = f'https://611ba87422020a00175a461c.mockapi.io'
 
     def __init__(self):
         pass
 
     def get_users(self):
-        response = requests.get(self.__url)
+        response = requests.get(f'{self.__url}/users')
         data = response.json()
         return data
 
     def get_users_by_id(self, id):
-        response = requests.get(f'{self.__url}/{id}')
+        response = requests.get(f'{self.__url}/users/{id}')
         data = response.json()
         return data
 
     def create_user(self, data):
-        response = requests.post(self.__url, data=data)
+        response = requests.post(f'{self.__url}/users', data=data)
         data = response.json()
         return data
 
     def edit_user(self, id, data):
-        response = requests.put(f'{self.__url}/{id}', data=data)
+        response = requests.put(f'{self.__url}/users/{id}', data=data)
         data = response.json()
         return data
     
     def delete_user(self, id):
-        response = requests.delete(f'{self.__url}/{id}')
+        response = requests.delete(f'{self.__url}/users/{id}')
         data = response.json()
         return data
 
