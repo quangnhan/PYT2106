@@ -35,15 +35,15 @@ class Server:
 
 def main():
     server = Server()
-    server.get_users()
-    server.get_users_by_id('8')
-    server.create_user(data={
+    print(server.get_users())
+    print(server.get_users_by_id('8'))
+    print(server.create_user(data={
         'name': 'NewUser',
-        'age': '100'})
-    server.edit_user(id=1, data={
+        'age': '100'}))
+    print(server.edit_user(id=1, data={
         'name': 'ModifiedUser',
-        'age': '150'})
-    server.delete_user(3)
+        'age': '150'}))
+    print(server.delete_user(3))
 
 
 if __name__ == "__main__":
