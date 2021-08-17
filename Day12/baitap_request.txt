@@ -1,9 +1,9 @@
 1) Bài tập về request
 - Viết class Server
 - __url = https://611ba6e422020a00175a460d.mockapi.io/users/ (Địa chỉ mockapi của cá nhân bạn)
-- Viết hàm get(max_age=None, min_age=None)
-- Viêt hàm get_by_id(id)
-- Viêt hàm post(data)
-- Viêt hàm put(id, data)
-- Viêt hàm delete(id)
+- Viết hàm get_users(max_age=None, min_age=None)
+- Viêt hàm get_user_by_id(id)
+- Viêt hàm create_user(data)
+- Viêt hàm edit_user(id, data)
+- Viêt hàm delete_user(id)
 
