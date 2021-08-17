@@ -1,6 +1,7 @@
 import requests
 import os
 import smtplib, ssl
+from gmail import Gmail
 
 class Server:
     # private variable
@@ -84,4 +85,11 @@ if __name__ == "__main__":
     print(server.delete_user(id))
 
     # send_gmail
-    server.send_gmail('b.tintuk@gmail.com')
+    receiver_email = "b.tintuk@gmail.com"  # Enter receiver address
+    message = """\
+    Subject: Hi there
+    This message is sent from Python."""
+
+    # server.send_gmail('b.tintuk@gmail.com')
+    gmail = Gmail()
+    gmail.send_email(receiver_email, message)
