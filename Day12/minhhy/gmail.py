@@ -26,10 +26,7 @@ class Gmail:
 
         Congratulation email from Python."""
 
-        context = ssl.create_default_context()
-        with smtplib.SMTP_SSL(self.__smtp_server, self.__port, context=context) as server:
-            server.login(self.__sender_email, self.__password)
-            server.sendmail(self.__sender_email, receiver_email, message)
+        self.send_email(receiver_email, message)
 
 if __name__ == "__main__":
     server = Server()
