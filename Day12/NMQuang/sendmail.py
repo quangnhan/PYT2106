@@ -36,9 +36,7 @@ def main():
     server = Server()
     mail = Mail()
     users = server.get_user()
-    for user in users:
-        mail.congratulate(user)
-
+    mail.congratulate(user for user in users)
 
 if __name__ == "__main__":
     main()
