@@ -1,5 +1,5 @@
 import smtplib, ssl
-
+from server import Server
 class Gmail:
 
     __port = 465  # For SSL
@@ -13,10 +13,14 @@ class Gmail:
             server.login(self.__sender_email, self.__password)
             server.sendmail(self.__sender_email, receiver_email, message)
 if __name__ =="__main__":
-    receiver_email = "phamanhquangit@gmail.com" 
-    message = """\
-    Subject: Hi there
+    server = Server()
+    users = server.get_user()
+    email = []
+    for i in users:
+        receiver_email = i['email']
+        message = """\
+        Subject: Hi there
 
-    This message is sent from Python."""
-    gmail = Gmail()
-    print(gmail.sendmail(receiver_email,message))
+        This message is sent from Python."""
+        gmail = Gmail()
+        print(gmail.sendmail(receiver_email,message))
