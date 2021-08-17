@@ -1,16 +1,16 @@
 import requests
 
 class Server():
-    
-    def __init__(self,url):
-        self.url = url
+    __url = 'https://611ba73022020a00175a4615.mockapi.io'
+    def __init__(self):
+        pass
     def get(self):
-        response = requests.get(self.url)
+        response = requests.get(f'{self.__url}/User')
         data = response.json()
         print(data)
 
     def get_user(self, max_age=None, min_age=None):
-        response = requests.get(self.url)
+        response = requests.get(f'{self.__url}/User')
         data = response.json()
         
 
@@ -35,9 +35,9 @@ class Server():
         response = requests.delete(f'{self.url}/{id}')
 
 if __name__ == '__main__':
-    url = 'https://611ba73022020a00175a4615.mockapi.io/User'
-    server = Server(url)
-    # print(server.get())
+    # url = 'https://611ba73022020a00175a4615.mockapi.io/User'
+    server = Server()
+    print(server.get())
     # id = '2'
     # print(server.get_user_by_id(id))
 
@@ -48,4 +48,4 @@ if __name__ == '__main__':
     # print(server.create_user(data))
 
     # print(server.edit_user(7,20))
-    print(server.delete_user(3))
+    # print(server.delete_user(3))
