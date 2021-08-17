@@ -30,7 +30,7 @@ class Excel:
 
 # Write the dataframe data to XlsxWriter. Turn off the default header and
 # index and skip one row to allow us to insert a user defined header.
-        df.to_excel(writer, sheet_name='Sheet1', startrow=1, header=False, index=False)
+        df.to_excel(writer, sheet_name='Sheet1', startrow=0, header=False, index=False)
 
 # Get the xlsxwriter workbook and worksheet objects.
         workbook = writer.book
@@ -59,7 +59,7 @@ if __name__ == "__main__":
         ['2','blue'],
         ['3','black'],
         ['4','green'],
-        ['','yellow'],
+        ['5','yellow'],
     ]
     excel = Excel(path)
     # excel.show()

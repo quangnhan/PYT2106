@@ -10,6 +10,9 @@ class CSV:
         for row in self.csv:
             print(row)
 
+    def write(write):
+        for 
+
 if __name__ == "__main__":
     path = f'{os.getcwd()}/Day11/data/data.csv'
     csv_file = CSV(path)
