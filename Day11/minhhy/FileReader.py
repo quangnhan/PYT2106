@@ -1,29 +1,46 @@
 import os
 from Json import Json
 from CSV import CSV
-from Excel import Excel
 from PDF import PDF
+from Excel import Excel
+
 
 class FileReader:
     __file_class = {
         'txt': Json,
         'csv': CSV,
+        'pdf': PDF,
         'xls': Excel,
-        'pdf': PDF
     }
 
-    def __init__(self, p):
-        name, file_type = p.split('.')
-        print("DEBUG file_type", file_type)
-        self.file_reader = self.__file_class[file_type](p)
+    def __init__(self, path):
+        _, self.file_type = path.split('.')
+        self.file_reader = self.__file_class[self.file_type](path)
 
     def show(self):
         self.file_reader.show()
 
+    def write(self, table):
+        if self.file_type in ['txt', 'xls']:
+            self.file_reader.write(table)
+        else:
+            print("You not implement write method")
+
+
 if __name__ == "__main__":
-    # p = f'{os.getcwd()}/Day11/data/data.txt'
-    # p = f'{os.getcwd()}/Day11/data/data.csv'
-    # p = f'{os.getcwd()}/Day11/data/data.xls'
-    p = f'{os.getcwd()}/Day11/data/data.pdf'
-    file_reader = FileReader(p)
-    file_reader.show()
+    # path = f'{os.getcwd()}/Day11/minhhy/data/data.txt'
+    # path = f'{os.getcwd()}/Day11/data/data.csv'
+    # path = f'{os.getcwd()}/Day11/data/data.pdf'
+    path = f'{os.getcwd()}/Day11/minhhy/data/data_test.xls'
+
+    table = [
+        ["Id", "Name", "Age"],
+        ["1", "Nhan", "26"],
+        ["2", "Hoan", "29"],
+        ["3", "Khiem", "14"],
+        ["4", "Viet", "29"],
+        ["5", "Tung", "29"],
+        ["6", "Khiet", "29"],
+    ]
+    file_reader = FileReader(path)
+    file_reader.write(table)
