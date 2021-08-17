@@ -23,6 +23,7 @@ if __name__ == "__main__":
     receiver_email = "b.tintuk@gmail.com"  # Enter receiver address
     message = """\
     Subject: Hi there
+
     This message is sent from Python."""
 
     gmail = Gmail()
