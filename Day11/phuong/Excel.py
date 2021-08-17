@@ -17,13 +17,13 @@ class Excel:
     # 'Population': [1404338840, 1366938189, 330267887,       269603400],
     # 'Rank':       [1,          2,          3,               4]})
         dataframe = dict()
-        for i in range(len(table[1])):
-            dataframe[table[0][i]] = [x[i] for x in table[2:]]
+        for i in range(len(table[0])):
+            dataframe[table[0][i]] = [x[i] for x in table[1:]]
 
         df = pd.DataFrame(dataframe)
 
 # Order the columns if necessary.
-        df = df[[1]]
+        df = df[[0]]
 
 # Create a Pandas Excel writer using XlsxWriter as the engine.
         writer = pd.ExcelWriter(self.path, engine='xlsxwriter')
