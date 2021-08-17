@@ -17,20 +17,20 @@ class Excel:
     # 'Population': [1404338840, 1366938189, 330267887,       269603400],
     # 'Rank':       [1,          2,          3,               4]})
         dataframe = dict()
-        for i in range(len(table[1])):
-            dataframe[table[0][i]] = [x[i] for x in table[2:]]
+        for i in range(len(table[0])):
+            dataframe[table[0][i]] = [x[i] for x in table[1:]]
 
         df = pd.DataFrame(dataframe)
 
 # Order the columns if necessary.
-        df = df[[1]]
+        df = df[[0]]
 
 # Create a Pandas Excel writer using XlsxWriter as the engine.
         writer = pd.ExcelWriter(self.path, engine='xlsxwriter')
 
 # Write the dataframe data to XlsxWriter. Turn off the default header and
 # index and skip one row to allow us to insert a user defined header.
-        df.to_excel(writer, sheet_name='Sheet1', startrow=1, header=False, index=False)
+        df.to_excel(writer, sheet_name='Sheet1', startrow=0, header=False, index=False)
 
 # Get the xlsxwriter workbook and worksheet objects.
         workbook = writer.book
@@ -59,7 +59,7 @@ if __name__ == "__main__":
         ['2','blue'],
         ['3','black'],
         ['4','green'],
-        ['','yellow'],
+        ['5','yellow'],
     ]
     excel = Excel(path)
     # excel.show()
