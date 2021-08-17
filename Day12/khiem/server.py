@@ -6,7 +6,7 @@ class Server:
     def __init__(self):
         pass
     
-    def get_shopper(self, max_address=None, min_address=None):
+    def get_shopper(self):
         response = requests.get(f'{self.__url}/Shopper')
         data = response.json()
         return data
