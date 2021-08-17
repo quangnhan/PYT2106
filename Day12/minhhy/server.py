@@ -1,7 +1,7 @@
 import requests
 import os
 import smtplib, ssl
-from gmail import Gmail
+# from gmail import Gmail
 
 class Server:
     # private variable
