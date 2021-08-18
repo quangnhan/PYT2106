@@ -1,33 +1,36 @@
 import os
 import pandas as pd
+from xlsxwriter import Workbook
 
 class Excel:
     def __init__(self, path):
-        self.path = path
+        self.excel = pd.read_excel(path)
 
     def show(self):
-        self.excel = pd.read_excel(path)
-        df = pd.DataFrame(self.excel, columns= ['Name'])
-        for data in df['Name']:
-            print(data)
-
+        df = pd.DataFrame(self.excel, columns=['Name'])
+        for row in df['Name']:
+            print(row)
+    
     def write(self, table):
+        # Create a Pandas dataframe from some data.
         # df = pd.DataFrame({
         #     'Country':    ['China',    'India',    'United States', 'Indonesia'],
         #     'Population': [1404338840, 1366938189, 330267887,       269603400],
         #     'Rank':       [1,          2,          3,               4]})
-        dataframe = dict()
+        # df = pd.DataFrame({
+        #     'Name': table [0],
+        #     'Age': table[1]
+        #     })
+        dataFrame = dict()
         for i in range(len(table[0])):
-            dataframe[table[0][i]] = [x[i] for x in table[1:]]
+            dataFrame[table[0][i]] = [x[i] for x in table[1:]]
 
-        df = pd.DataFrame(dataframe)
-
+        df = pd.DataFrame(dataFrame)
         # Order the columns if necessary.
         # df = df[['Rank', 'Country', 'Population']]
         df = df[table[0]]
-
         # Create a Pandas Excel writer using XlsxWriter as the engine.
-        writer = pd.ExcelWriter(self.path, engine='xlsxwriter')
+        writer = pd.ExcelWriter('pandas_table.xlsx', engine='xlsxwriter')
 
         # Write the dataframe data to XlsxWriter. Turn off the default header and
         # index and skip one row to allow us to insert a user defined header.
@@ -52,8 +55,9 @@ class Excel:
         # Close the Pandas Excel writer and output the Excel file.
         writer.save()
 
-if __name__ == "__main__":
-    path = f'{os.getcwd()}/Day11/nhan/data/data.xls'
+if __name__ == '__main__':
+    path = f'{os.getcwd()}/Day11/data/data.xls'
+    excel = Excel(path)
     table = [
         ["Name", "Age"],
         ["Nhan", "26"],
@@ -61,7 +65,5 @@ if __name__ == "__main__":
         ["Khiem", "14"],
         ["Viet", "29"],
         ]
-
-    excel = Excel(path)
     # excel.show()
     excel.write(table)

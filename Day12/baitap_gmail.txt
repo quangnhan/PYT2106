@@ -1,0 +1,7 @@
+1) Tạo class Server
+- Lấy dữ liệu user có 2 thuộc tính là (name, email) từ mockapi
+
+1) Bài tập về viết email
+- Viết class Gmail
+- Viết hàm congratulation(name, email) để tự động gửi email đến những ứng viên trúng tuyển,
+trong đó danh sách ứng viên lấy từ API (Dùng class Server đã viết ở trên để lấy dữ liệu)
