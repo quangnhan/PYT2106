@@ -20,7 +20,7 @@ builder.build_window(30)
 house = builder.get_result()
 house.show()
 
-# director
+# director -> builder -> class function build
 print("[DEBUG] -- director")
 director = Director(builder)
 director.make('mordern')
