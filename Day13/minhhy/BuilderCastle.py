@@ -1,18 +1,10 @@
 from Castle import Castle
+from Builder import Builder
 
-class BuilderCastle:
+class BuilderCastle(Builder):
     def __init__(self):
-        self.__result = Castle()
+        self._result = Castle()
 
-
-    def build_wall(self, number):
-        self.__result.walls = number
-
-    def build_door(self, number):
-        self.__result.doors = number
-
-    def build_window(self, number):
-        self.__result.windows = number
-
-    def get_result(self):
-        return self.__result
+    # overwrite build_pool from Builder
+    def build_pool(self, number):
+        self._result.pools = number
