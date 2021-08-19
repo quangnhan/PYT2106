@@ -11,3 +11,4 @@ class Director:
             self.__builder.build_walls(20)
             self.__builder.build_doors(5)
             self.__builder.build_windows(50)
+            self.__builder.build_pool(1)
