@@ -1,12 +1,11 @@
-from Director import Director
 from BuilderTreeHouse import BuilderTreeHouse
 from BuilderCastle import BuilderCastle
+from Director import Director
 
 # builder = BuilderTreeHouse()
 builder = BuilderCastle()
-house = builder.get_result()
 director = Director(builder)
-
 director.make("mordern")
 
+house = builder.get_result()
 house.show()

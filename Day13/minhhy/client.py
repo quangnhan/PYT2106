@@ -1,4 +1,5 @@
 from BuilderTreeHouse import BuilderTreeHouse
+from BuilderCastle import BuilderCastle
 from director import Director
 
 builder = BuilderTreeHouse()
@@ -21,8 +22,16 @@ house = builder.get_result()
 house.show()
 
 # director -> builder -> class function build
-print("[DEBUG] -- director with hidden build")
+print("[DEBUG] -- director with hidden build - treehouse")
 director = Director(builder)
 director.make('mordern')
+house = builder.get_result()
+house.show()
+
+# director -> builder castle -> class function build
+print("[DEBUG] -- director with hidden build - castle")
+builder = BuilderCastle()
+director = Director(builder)
+director.make('classic')
 house = builder.get_result()
 house.show()
