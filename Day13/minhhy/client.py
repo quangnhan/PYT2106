@@ -13,7 +13,7 @@ house = builder.get_result()
 house.show()
 
 # second treehouse
-print("[DEBUG] -- second tree house")
+print("[DEBUG] -- second tree house without door")
 builder.build_wall(10)
 builder.build_window(30)
 
@@ -21,7 +21,7 @@ house = builder.get_result()
 house.show()
 
 # director -> builder -> class function build
-print("[DEBUG] -- director")
+print("[DEBUG] -- director with hidden build")
 director = Director(builder)
 director.make('mordern')
 house = builder.get_result()
