@@ -1,0 +1,13 @@
+Thiết kế cơ sở dữ liệu để phân quyền của user.
+
+Mô tả:
+1) Công ty FPT có 20 nhân viên bảo vệ, 200 nhân viên văn phòng, 3 giám đốc.
+2) Công ty có 3 cửa ra vào, 27 cửa văn phòng, 2 cửa vào phòng họp.
+3) Mỗi nhân viên được cấp 1 thẻ từ:
+    + Bảo vệ có thể đi qua 3 cửa ra vào.
+    + Nhân viên văn phòng có thể đi qua 3 cửa ra vào, 27 cửa văn phòng.
+    + Giám đốc có thể đi qua tất cả các cửa.
+
+Hãy thiết kế database để phân quyền cho hệ thống.
+
+Gợi ý: Hệ thống sẽ có tổng cộng 6 bảng, với 3 bản chính là user, group, pesmission.
