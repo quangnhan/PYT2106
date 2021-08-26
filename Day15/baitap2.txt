@@ -1,0 +1,15 @@
+Thiết kế database của trang web udemy.com. Đây là trang web bán các khóa học trực tuyến.
+Trang web sẽ bao gồm các tính năng sau:
+
+1) Giảng viên
+    + Đăng ký
+    + Đăng khóa học
+    + Giá bán của khóa học
+
+2) Học sinh
+    + Đăng ký
+    + Mua khóa học
+    + Lưu lại lịch sử đang học ở đâu (Ví dụ video số 13 của khóa học Django học 
+        tới phút thứ 11 trong tổng cộng 20 phút)
+
+3) Giảm giá chung cho toàn hệ thống, và giảm giá riêng cho từng khóa học
