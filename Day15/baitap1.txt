@@ -1,0 +1,11 @@
+Thiết kế database Grab 
+1) User 
+    + Đăng ký
+    + Đặt cuốc xe 
+    + Lưu mã giảm giá
+
+2) Tài xế 
+    + Đăng ký 
+    + Nhận cuốc xe
+
+3) Lưu lại lịch sử
