@@ -1,0 +1,14 @@
+Thiết kế hệ thống lưu trữ dữ liệu các tài xế lưu thông trong thời covid:
+
+1) Tài xế   
+    + Đăng ký tài khoản
+    + Đăng ký để nhận giấy đi đường
+    + Đăng ký lộ trình đi xe
+
+2) Công an 
+    + Đăng ký tài khoản
+    + Đánh dấu đã kiểm tra tài xế Nhân, tại Hà Tĩnh vào lúc 15h 25/8/2021
+
+3) Y bác sĩ
+    + Đăng ký tài khoản
+    + Lên lịch xét nghiệm cho các tài xế sắp di chuyển tới địa bàn của mình

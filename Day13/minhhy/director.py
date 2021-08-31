@@ -12,5 +12,6 @@ class Director:
             self.__builder.build_wall(20)
             self.__builder.build_door(20)
             self.__builder.build_window(20)
+            self.__builder.build_pool(1)
         else:
             raise  Exception('[ERROR] input wrong type')

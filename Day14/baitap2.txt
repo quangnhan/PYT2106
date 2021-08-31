@@ -1,0 +1,7 @@
+Thiết kế hệ thống điểm thưởng của Shopee:
+1) Mỗi mặt hàng sẽ có 1 số điểm thưởng riêng, có thể là theo % giá tiền hoặc một con số cố định
+2) Mỗi khi khách hàng mua hàng sẽ lưu lại điểm thưởng 
+    + Lưu lại lịch sử mua hàng
+    + Cần phải lưu lại con số chứ không liên kết tới bảng hàng hóa, 
+      vì có thể số điểm ở bảng hàng hóa sẽ thay đổi
+3) Khi thanh toán sẽ trừ số điểm thưởng còn lại trong ví
