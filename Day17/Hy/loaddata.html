@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <div> ID: <input type="number" id ="number" /></div>
+    <button onclick="load()">load</button>
+    <div>ID: <span type="text" id="text_id" ></span></div>
+    <div>Name: <span type="text" id="email" ></span></div>
+    <div>Email: <span type="text" id="name" ></span></div>
+    
+</body>
+<script>
+function load() {
+    var id = $("#number").val();
+    
+
+    $.ajax({
+    url: "https://611ba8eb22020a00175a462b.mockapi.io/user/" + id,
+    type: "get",
+    success: function (response) {
+        $("#text_id").html(response['id']);
+        $("#email").html(response['email']);
+        $("#name").html(response['name']);
+    },
+    error: function (error) {
+        console.error("Error", error);
+    },
+    });
+}
+</script>
+</html>
