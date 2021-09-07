@@ -12,6 +12,12 @@
 
     <div id="count">count</div>
     <button onclick="add()">click count</button>
+
+    <div>
+        <input type="text" id="name" onchange="updateText()">
+<!--        <button onclick="updateText()">click text</button>-->
+        <div id="update_text"></div>
+    </div>
 </body>
 <script>
     var count = 0;
@@ -28,6 +34,11 @@
         count++;
         // document.getElementById("count").innerHTML = count;
         $("#count").html(count);
+    }
+
+    function updateText() {
+        var text = $('#name').val();
+        $('#update_text').html(text);
     }
 </script>
 </html>
