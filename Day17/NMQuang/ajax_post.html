@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let data = {
+          name: "Nathan",
+          email: "test@gmail.com",
+        };
 
-<head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      let data = {
-        name: "Nathan",
-        email: "test@gmail.com",
-      };
-
-      $("button").click(function () {
-        $.ajax({
-          url: "https://611ba87422020a00175a461c.mockapi.io/users",
-          type: "post",
-          data: data,
-          success: function (response) {
-            $("#text").text("Create success.");
-          },
-          error: function (error) {
-            $("#text").text("Some error happend.");
-          },
+        $("button").click(function () {
+          $.ajax({
+            url: "https://611ba6e422020a00175a460d.mockapi.io/users",
+            type: "post",
+            data: data,
+            success: function (response) {
+              $("#text").text("Create success.");
+            },
+            error: function (error) {
+              $("#text").text("Some error happend.");
+            },
+          });
         });
       });
-    });
-  </script>
-</head>
+    </script>
+  </head>
 
-<body>
-  <button>Send HTTP POST request</button>
-  <div id="text"></div>
-</body>
-
+  <body>
+    <button>Send HTTP POST request</button>
+    <div id="text"></div>
+  </body>
 </html>
