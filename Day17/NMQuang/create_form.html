@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</header>
+
+<body>
+  <div>Name: <input type="text" id="name" /></div>
+  <div>Email: <input type="text" id="email" /></div>
+  <button onclick="create()">Create</button>
+  <div id="text"></div>
+</body>
+<script>
+  function create() {
+    var name = $("#name").val();
+    var email = $("#email").val();
+
+    let data = {
+      name: name,
+      email: email,
+    };
+
+    $.ajax({
+      url: "https://611ba87422020a00175a461c.mockapi.io/users",
+      type: "post",
+      data: data,
+      success: function (response) {
+        $("#text").text("Create success.");
+      },
+      error: function (error) {
+        $("#text").text("Some error happend.");
+      },
+    });
+  }
+</script>
+
+</html>
