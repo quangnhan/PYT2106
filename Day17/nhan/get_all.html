@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+  </header>
+  <body>
+    <div id="products"></div>
+  </body>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        url: "https://611ba6e422020a00175a460d.mockapi.io/users",
+        type: "get",
+        success: function (response) {
+          for (var i = 0; i < response.length; i++) {
+            $("#products").append(
+              `<div class="bg-primary mt-2 w-25">${response[i]["name"]}</div>`
+            );
+          }
+        },
+        error: function (error) {
+          console.error("Some error happend", error);
+        },
+      });
+    });
+  </script>
+</html>
