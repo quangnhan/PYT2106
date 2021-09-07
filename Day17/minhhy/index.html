@@ -1,0 +1,33 @@
+<html>
+  <header>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+  </header>
+<body>
+    <div id="text">hello</div>
+    <button onclick="changeText()">click me</button>
+
+    <div id="count">count</div>
+    <button onclick="add()">click count</button>
+</body>
+<script>
+    var count = 0;
+    var name = "python";
+
+    function changeText() {
+        // console.log('log');
+        // console.warn('warn');
+        // console.error('error');
+        document.getElementById("text").innerHTML = 'new';
+    }
+
+    function add() {
+        count++;
+        // document.getElementById("count").innerHTML = count;
+        $("#count").html(count);
+    }
+</script>
+</html>
