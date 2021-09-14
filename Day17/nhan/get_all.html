@@ -14,17 +14,21 @@
     ></script>
   </header>
   <body>
-    <div id="products"></div>
+    <div class="row" id="products"></div>
   </body>
   <script>
     $(document).ready(function () {
       $.ajax({
-        url: "https://611ba6e422020a00175a460d.mockapi.io/users",
+        url: "https://611ba6e422020a00175a460d.mockapi.io/category/1/products",
         type: "get",
         success: function (response) {
           for (var i = 0; i < response.length; i++) {
             $("#products").append(
-              `<div class="bg-primary mt-2 w-25">${response[i]["name"]}</div>`
+              `<div class="col-3 bg-success">
+              <p><img src = "${response[i]["image"]}"width="200" height="150"></p>
+              <p>${response[i]["name"]} </p>
+              <b><p>${response[i]["price"]}</p></b>
+              </div>`
             );
           }
         },
