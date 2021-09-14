@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>Blog list</h1>
-    {% for blog in blogs  %}
+    {% for blog in list_all_blog  %}
     <div>
     <p> Id : {{blog.id}} </p>
     <p> Name : {{blog.name}} </p>
@@ -22,12 +22,13 @@
     <input id="name" />
     <button onclick="create()"> Create</button>
     <div id= 'message'> </div>
+
 <script>
     function create(){
         var name = $("#name").val();
 
         $.ajax({
-            url:"{% url 'blog_list' %}",
+            url:"{% url 'blog_create' %}",
             method:"POST",
             data: {
                 'csrfmiddlewaretoken': '{{ csrf_token }}',
