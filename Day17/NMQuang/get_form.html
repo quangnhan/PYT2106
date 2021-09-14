@@ -19,7 +19,7 @@
   function get_data() {
     var id = $("#ID").val();
     $.ajax({
-      url: "https://611ba87422020a00175a461c.mockapi.io/users" + id,
+      url: "https://611ba87422020a00175a461c.mockapi.io/users/" + id,
       type: "get",
       success: function (response) {
         $("#text_id").html(response["id"]);

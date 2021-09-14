@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</header>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <select id="category" onchange="get_products()"></select>
+    </div>
+    <div class="row" id="products"></div>
+  </div>
+</body>
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      url: "https://611ba87422020a00175a461c.mockapi.io/category",
+      type: "get",
+      success: function (response) {
+        for (var i = 0; i < response.length; i++) {
+          $("#category").append(
+            `<option value="${response[i]["id"]}">${response[i]["name"]}</option>`
+          );
+        }
+        get_products();
+      },
+      error: function (error) {
+        console.error("Some error happend", error);
+      },
+    });
+  });
+
+  function get_products() {
+    var category_id = $("#category").val();
+    get_products_by_category(category_id);
+  }
+
+  function get_products_by_category(category_id) {
+    $.ajax({
+      url: `https://611ba87422020a00175a461c.mockapi.io/category/${category_id}/products`,
+      type: "get",
+      success: function (response) {
+        $("#products").html("");
+        for (var i = 0; i < response.length; i++) {
+          $("#products").append(
+            `<div class="col-3 bg-success">
+              <p><img src = "${response[i]["image"]}"width="200" height="150"></p>
+              <p>${response[i]["name"]} </p>
+              <b><p>${response[i]["price"]}</p></b>
+              </div>`
+          );
+        }
+      },
+      error: function (error) {
+        console.error("Some error happend", error);
+      },
+    });
+  }
+</script>
+
+</html>
