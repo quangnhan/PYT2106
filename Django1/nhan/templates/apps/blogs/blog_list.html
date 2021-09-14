@@ -19,7 +19,7 @@
     var name = $("#name").val();
 
     $.ajax({
-      url: "{% url 'blog_list' %}",
+      url: "{% url 'blog_create' %}",
       method: "POST",
       data: { 
           'csrfmiddlewaretoken': '{{ csrf_token }}',
