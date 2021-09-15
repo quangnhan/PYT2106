@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect 
 from django.views.generic import TemplateView
 from .models import Blog
 # Create your views here.
@@ -22,8 +22,9 @@ class BlogListView(TemplateView):
             Blog.objects.create(name=name)
             if name: self.template_name = 'apps/blogs/blog_list.html'
             context['name'] = name + 'Update'
-            return HttpResponse(f"Create blog {context['name']} success")
-            
+            #return HttpResponse(f"Create blog {context['name']} success")
+            return HttpResponseRedirect ("/blog")
+
 
     
 def blog_create(request):
