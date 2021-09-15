@@ -3,12 +3,12 @@ class Director:
         self.__builder = builder
 
     def make(self, build_type):
-        print("Design by {build_type}")
+        print(f"Design by {build_type}")
         if build_type == 'classic':
-            self.__builder.build_wall(4)
-            self.__builder.build_door(1)
-            self.__builder.build_window(1)
+            self.__builder.build_walls(4)
+            self.__builder.build_doors(1)
+            self.__builder.build_windows(1)
         elif build_type == 'mordern':
-            self.__builder.build_wall(44)
-            self.__builder.build_door(11)
-            self.__builder.build_window(11)
+            self.__builder.build_walls(44)
+            self.__builder.build_doors(11)
+            self.__builder.build_windows(11)
