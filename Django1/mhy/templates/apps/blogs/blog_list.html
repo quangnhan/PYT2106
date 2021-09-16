@@ -1,0 +1,8 @@
+<h1>Blog List</h1>
+
+{% for blog in list_all_blog %}
+<div>
+  <p>Id: {{blog.id}}</p>
+  <p>Name: {{blog.name}}</p>
+</div>
+{% endfor %}
