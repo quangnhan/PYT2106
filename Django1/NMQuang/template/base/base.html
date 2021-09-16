@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +14,13 @@
   <title>Blog List</title>
 </head>
 
-<body>
+<body style="background-color:#52595D;">
   {% include 'base/navbar.html' %}
-  {% block body %}{% endblock %}
+  <div class='container'>
+    {% block body %}{% endblock %}
+  </div>
   {% include 'base/footer.html' %}
+  <script src="{% static 'js/loading.js' %}"></script>
   {% block script %}{% endblock %}
 </body>
 
