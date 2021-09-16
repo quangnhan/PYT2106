@@ -5,6 +5,7 @@ from .models import Blog
 # Create your tests here.
 class BlogTest(TestCase):
     def setUp(self):
+        # run dau tien truoc moi test case
         Blog.objects.create(name="foo")
         Blog.objects.create(name="bar")
 
