@@ -15,23 +15,26 @@ class BlogListView(TemplateView):
         context['list_all_blog'] = list_all_blog
         return context
 
-    def post(self, request, *args, **kwargs):
-        if request.method == "POST":
-            context = super().get_context_data(*args, **kwargs)
-            name = self.request.POST.get('name', None)
-            Blog.objects.create(name=name)
-            if name: self.template_name = 'apps/blogs/blog_list.html'
-            context['name'] = name + 'Update'
-            #return HttpResponse(f"Create blog {context['name']} success")
-            return HttpResponseRedirect ("/blog")
+class BlogCreateView(TemplateView):
+    template_name ="apps/blogs/blog_create.html"
+    # def post(self, request, *args, **kwargs):
+    #     if request.method == "POST":
+    #         # context = super().get_context_data(*args, **kwargs)
+    #         name = self.request.POST.get('name', None)
+    #         Blog.objects.create(name=name)
+    #         if name: self.template_name = 'apps/blogs/blog_create.html'
+    #         # context['name'] = name + 'Update'
+    #         #return HttpResponse(f"Create blog {context['name']} success")
+    #         return HttpResponseRedirect ("/blog")
 
 
     
 def blog_create(request):
     if request.method == "POST":
         name = request.POST.get('name')
+        Blog.objects.create(name=name)
         return HttpResponse(f"Create blog {name} success")
-
+        #return HttpResponseRedirect ("/blog")
 # def blog_list(request):
 #     if request.method == 'GET':
 
