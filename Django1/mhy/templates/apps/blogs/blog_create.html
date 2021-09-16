@@ -1,13 +1,14 @@
 {% extends 'base/base.html' %}
 
-{% block create %}
-
+{% block body %}
 <h1>Blog Create</h1>
 
 <input id="name" />
 <button onclick="create()">Create</button>
 <div id=message></div>
+{% endblock %}
 
+{% block script %}
 <script>
   function create() {
     var name = $("#name").val();
