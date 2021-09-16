@@ -5,7 +5,7 @@ from Director import Director
 # builder = BuilderTreeHouse()
 builder = BuilderCastle()
 director = Director(builder)
-director.make("modern")
+director.make("classic")
 
 house = builder.get_result()
 house.show()

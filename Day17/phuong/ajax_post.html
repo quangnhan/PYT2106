@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let data = {
+          name: random,
+          email: email,
+        };
+
+        $("button").click(function () {
+          $.ajax({
+            url: "https://611ba8ad22020a00175a4622.mockapi.io/mail",
+            type: "post",
+            data: data,
+            success: function (response) {
+              $("#text").text("Create success.");
+            },
+            error: function (error) {
+              $("#text").text("Some error happend.");
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <button>Send HTTP POST request</button>
+    <div id="text"></div>
+  </body>
+</html>
