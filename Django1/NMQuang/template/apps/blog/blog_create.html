@@ -1,6 +1,5 @@
-{% extends 'base/base.html' %}
-
-{% block create %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 
 <h1>Blog Create</h1>
 
@@ -16,8 +15,8 @@
       url: "{% url 'blog_post_create' %}",
       method: "POST",
       data: {
-          'csrfmiddlewaretoken': '{{ csrf_token }}',
-          'name' : name
+        'csrfmiddlewaretoken': '{{ csrf_token }}',
+        'name': name
       },
       success: function (result) {
         $('#message').text(result)
@@ -28,4 +27,3 @@
     });
   }
 </script>
-{% endblock %}

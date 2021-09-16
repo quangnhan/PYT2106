@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-00topgx68$#^86d)a17yod75jv9)z_%sa-u7t3_qdus3o0^d3^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'hello-world.lotussense.live']
+ALLOWED_HOSTS = ['127.0.0.1', 'learn-django.lotussense.live']
 
 
 # Application definition

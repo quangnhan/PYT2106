@@ -1,8 +1,26 @@
-<h1>Blog List</h1>
+{% extends 'base/base.html' %}
 
-{% for blog in list_all_blog %}
-<div>
-  <p>Id: {{blog.id}}</p>
-  <p>Name: {{blog.name}}</p>
-</div>
-{% endfor %}
+{% block body %}
+  <!-- Body -->
+  <h1>Blog List</h1>
+  <div class="badge badge-primary text-wrap" style="width: 6rem;">
+    This text should wrap.
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for blog in list_all_blog %}
+      <tr>
+        <td>{{ blog.id }}</td>
+        <td>{{ blog.name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
