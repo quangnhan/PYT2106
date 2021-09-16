@@ -13,6 +13,9 @@ class BlogListView(TemplateView):
         context['list_all_blog'] = list_all_blog
         return context
 
+class BlogCreateView(TemplateView):
+    template_name = "apps/blogs/blog_create.html"
+
 def blog_create(request):
     if request.method == 'POST':
         name = request.POST.get('name')
