@@ -1,15 +1,19 @@
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+{% extends 'base/base.html'%}
 
+{% block body %}
 <h1>Blog Create</h1>
 
 <input id="name" />
 <button onclick="create()">Create</button>
 <div id=message></div>
+{% endblock %}
 
+{% block script %}
 <script>
   function create() {
     var name = $("#name").val();
-
+    loading();
+    
     $.ajax({
       url: "{% url 'blog_post_create' %}",
       method: "POST",
@@ -26,3 +30,4 @@
     });
   }
 </script>
+{% endblock%}
