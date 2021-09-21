@@ -1,0 +1,56 @@
+{% extends 'base/base.html'%}
+
+{% block body %}
+  <div class='row mt-3 mb-3'>
+    <div class="col-3">
+      <select class="form-control" id="category" onchange="get_list_blog()">
+        {% for category in list_all_category %}
+        <option value="{{category_id}}">{{category.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <a class='btn btn-primary' href="{% url 'blog_create' %}">Create</a>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for blog in list_all_blog %}
+      <tr>
+        <td>{{blog.id}}</td>
+        <td>@{{blog.name}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block script %}
+<script>
+  function get_list_blog() {
+    var category_id = $("#category").val();
+    
+    $.ajax({
+      url: "{% url 'blog_list' %}",
+      method: "GET",
+      data: { 
+          'category_id' : category_id
+      },
+      success: function (result) {
+        $('#message').html(result)
+      },
+      error: function (result) {
+        console.error(result)
+      }
+    });
+  }
+
+  $( document ).ready(function() {
+    get_list_blog();
+  });
+</script>
+{% endblock%}
