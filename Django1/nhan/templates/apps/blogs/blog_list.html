@@ -3,6 +3,7 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -10,6 +11,9 @@
     <tr>
       <td>{{blog.id}}</td>
       <td>@{{blog.name}}</td>
+      <td>
+        <a class="btn btn-primary" href="{% url 'blog_detail' pk=blog.id %}">Detail</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>

@@ -1,20 +1,20 @@
+from django.db import models
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from .models import Blog, Category
 # Create your views here.
 
-class CategoryListView(TemplateView):
+class CategoryListView(ListView):
     template_name = "apps/blogs/category_list.html"
+    model = Category
+    context_object_name = 'list_all_category'
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        list_all_category = Category.objects.all()
-        context['list_all_category'] = list_all_category
-        return context
-
-class BlogListView(TemplateView):
+class BlogListView(ListView):
     template_name = "apps/blogs/blog_list.html"
+    model = Blog
 
     def get_context_data(self, *args, **kwargs):
         # Get data
@@ -34,3 +34,7 @@ def blog_create(request):
         name = request.POST.get('name')
         Blog.objects.create(name=name)
         return HttpResponse(f"Create blog {name} success")
+
+class BlogDetailView(DetailView):
+    template_name = "apps/blogs/blog_detail.html"
+    model = Blog
