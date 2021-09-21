@@ -2,9 +2,9 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
-<h1 style="color:white;">Create Blog</h1>
+<h1 class="text-light">Create Blog</h1>
 
-<form method="post">
+<form class="text-light" method="post">
   {% csrf_token %}
   {{ form|crispy }}
   <input type="submit" value="Create">

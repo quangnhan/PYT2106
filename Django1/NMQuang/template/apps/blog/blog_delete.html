@@ -1,9 +1,9 @@
 {% extends 'base/base.html'%}
 
 {% block body %}
-<h1>Blog Create</h1>
+<h1 class="text-light">Blog Create</h1>
 
-<form method="post">{% csrf_token %}
+<form class="text-light" method="post">{% csrf_token %}
   <p>Are you sure you want to delete "{{ object }}"?</p>
   <input type="submit" value="Confirm">
 </form>
