@@ -2,11 +2,11 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
-<h1 style="color:white;">Create Blog</h1>
+<h1>Blog Update</h1>
 
 <form method="post">
   {% csrf_token %}
   {{ form|crispy }}
-  <input type="submit" value="Create">
+  <input type="submit" value="Update">
 </form>
-{% endblock%}
+{% endblock %}
