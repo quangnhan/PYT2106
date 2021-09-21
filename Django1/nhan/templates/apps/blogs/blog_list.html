@@ -10,9 +10,11 @@
     {% for blog in list_all_blog %}
     <tr>
       <td>{{blog.id}}</td>
-      <td>@{{blog.name}}</td>
+      <td>{{blog.name}}</td>
       <td>
         <a class="btn btn-primary" href="{% url 'blog_detail' pk=blog.id %}">Detail</a>
+        <a class="btn btn-warning" href="{% url 'blog_update' pk=blog.id %}">Update</a>
+        <a class="btn btn-danger" href="{% url 'blog_delete' pk=blog.id %}">Delete</a>
       </td>
     </tr>
     {% endfor %}
