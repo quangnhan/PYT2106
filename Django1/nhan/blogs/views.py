@@ -1,9 +1,11 @@
 from django.db import models
-from django.shortcuts import render
+from django.shortcuts import render, resolve_url
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 from .models import Blog, Category
 # Create your views here.
 
@@ -26,8 +28,8 @@ class BlogListView(ListView):
         context['list_all_blog'] = list_all_blog
         return context
 
-class BlogCreateView(TemplateView):
-    template_name = "apps/blogs/blog_create.html"
+class BlogCreateV2View(TemplateView):
+    template_name = "apps/blogs/blog_create_2.html"
 
 def blog_create(request):
     if request.method == 'POST':
@@ -38,3 +40,12 @@ def blog_create(request):
 class BlogDetailView(DetailView):
     template_name = "apps/blogs/blog_detail.html"
     model = Blog
+
+class BlogCreateView(CreateView):
+    template_name = "apps/blogs/blog_create.html"
+    model = Blog
+    fields = ['name', 'description', 'category']
+    # success_url = reverse_lazy('category_list')
+
+    def get_success_url(self, **kwargs):      
+        return reverse_lazy('blog_detail', args = (self.object.id,))
