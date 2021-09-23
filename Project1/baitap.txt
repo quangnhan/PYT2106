@@ -1,0 +1,11 @@
+Tạo 1 trang web đấu giá 
+
+- Người mua:
++ Chỉ có user đã đăng nhập mới có quyền đăng bán sản phẩm
++ Có thể đặt mức giá thấp nhất họ muốn bán
++ Đặt thời gian hết hạn khi đăng bán sản phẩm, ví dụ 1 tuần, 2 tuần
+
+- Người bán:
++ Chỉ có user đã đăng nhập mới có quyền đặt giá
++ Chỉ lưu lại giá cao nhất
++ Đặt thời gian đếm ngược cho 1 sản phẩm 
