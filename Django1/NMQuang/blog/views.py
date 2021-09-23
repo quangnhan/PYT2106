@@ -1,21 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .models import Blog, Category
 
 
-class CategoryListView(TemplateView):
+class CategoryListView(ListView):
     template_name = "apps/blog/category_list.html"
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        list_all_category = Category.objects.all()
-        context['list_all_category'] = list_all_category
-        return context
+    model = Category
+    context_object_name = 'list_all_category'
 
 
-class BlogListView(TemplateView):
+class BlogListView(ListView):
     template_name = "apps/blog/blog_list.html"
+    model = Blog
 
     def get_context_data(self, *args, **kwargs):
         # Get data
@@ -28,12 +29,42 @@ class BlogListView(TemplateView):
         return context
 
 
-class BlogCreateView(TemplateView):
+# class BlogCreateView(TemplateView):
+#     template_name = "apps/blog/blog_create.html"
+
+
+# def blog_create(request):
+#     if request.method == 'POST':
+#         name = request.POST.get('name')
+#         Blog.objects.create(name=name)
+#         return HttpResponse(f"Create blog {name} success")
+
+
+class BlogDetailView(DetailView):
+    template_name = "apps/blog/blog_detail.html"
+    model = Blog
+
+
+class BlogCreateView(CreateView):
     template_name = "apps/blog/blog_create.html"
+    model = Blog
+    fields = ['name', 'description', 'category']
+    # success_url = reverse_lazy('category_list')
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('blog_detail', args = (self.object.id,))
 
 
-def blog_create(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        Blog.objects.create(name=name)
-        return HttpResponse(f"Create blog {name} success")
+class BlogUpdateView(UpdateView):
+    template_name = "apps/blog/blog_update.html"
+    model = Blog
+    fields = ['name', 'description', 'category']
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('blog_detail', args = (self.object.id,))
+
+
+class BlogDeteleView(DeleteView):
+    template_name = "apps/blog/blog_delete.html"
+    model = Blog
+    success_url = reverse_lazy('category_list')
