@@ -3,31 +3,9 @@
 {% block body %}
 <h1>Blog Create</h1>
 
-<input id="name" />
-<button onclick="create()">Create</button>
-<div id=message></div>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Create">
+</form>
 {% endblock %}
-
-{% block script %}
-<script>
-  function create() {
-    var name = $("#name").val();
-    loading();
-    
-    $.ajax({
-      url: "{% url 'blog_post_create' %}",
-      method: "POST",
-      data: { 
-          'csrfmiddlewaretoken': '{{ csrf_token }}',
-          'name' : name
-      },
-      success: function (result) {
-        $('#message').text(result)
-      },
-      error: function (result) {
-        console.error(result)
-      }
-    });
-  }
-</script>
-{% endblock%}

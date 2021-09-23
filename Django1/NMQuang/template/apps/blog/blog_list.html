@@ -1,12 +1,9 @@
-{% extends 'base/base.html'%}
-{% block body %}
-<h1 style="color:white;">Blog List</h1>
-<a class='btn btn-primary' href="{% url 'blog_create' %}">Create</a>
 <table class="table table-dark">
   <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -14,8 +11,12 @@
     <tr>
       <td>{{blog.id}}</td>
       <td>@{{blog.name}}</td>
+      <td>
+        <a class="btn btn-outline-info" href="{% url 'blog_detail' pk=blog.id %}">Detail</a>
+        <a class="btn btn-outline-warning" href="{% url 'blog_update' pk=blog.id %}">Update</a>
+        <a class="btn btn-outline-danger" href="{% url 'blog_delete' pk=blog.id %}">Delete</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-{% endblock %}

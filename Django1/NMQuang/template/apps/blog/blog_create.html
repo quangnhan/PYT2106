@@ -1,32 +1,12 @@
 {% extends 'base/base.html'%}
+{% load crispy_forms_tags %}
 
 {% block body %}
-<h1 style="color:white;">Create Blog</h1>
+<h1 class="text-light">Create Blog</h1>
 
-<input class="form-control" id="name" />
-<button class='btn btn-primary' onclick="create()">Create</button>
-<div id=message></div>
-{% endblock %}
-
-{% block script %}
-<script>
-  function create() {
-    var name = $("#name").val();
-    loading();
-    $.ajax({
-      url: "{% url 'blog_post_create' %}",
-      method: "POST",
-      data: {
-        'csrfmiddlewaretoken': '{{ csrf_token }}',
-        'name': name
-      },
-      success: function (result) {
-        $('#message').text(result)
-      },
-      error: function (result) {
-        console.error(result)
-      }
-    });
-  }
-</script>
+<form class="text-light" method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input type="submit" value="Create">
+</form>
 {% endblock%}
