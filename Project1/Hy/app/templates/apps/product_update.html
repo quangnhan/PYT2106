@@ -1,0 +1,58 @@
+{% extends 'base/base.html'%}
+
+{% block body %}
+<div class="container " style="text-align: center;">
+    <h1>Đấu Giá</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <img src="/auctions/media/{{object.imageUrl}}"style="weight:150px;height:150px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="{{object.imageUrl}}">
+        <div class="row m-1 p-1">
+        <input name="id" value="{{object.id}}" hidden>
+            <div class="col-4"style="text-align: end;">
+                <label class="form-label">Product Name: </label>
+                
+            </div>
+            <div class="col-4" >
+                <input name="name" value="{{object.name}}" id="id_name" class="form-control" type="text" readonly/>
+            </div>
+        </div>
+        <div class="row m-1 p-1">
+            <div class="col-4"style="text-align: end;">
+                <label class="form-label">Price : </label>
+            </div>
+            <div class="col-4">
+                
+                <input name="price" value="{{object.price_start}}" id="id_price_start" class="form-control" type="number" min ="{{object.price_start}}"/>
+            </div>
+        </div>
+        <div class="row m-1 p-1">
+            <div class="col-4"style="text-align: end;">
+                <label class="form-label">Category : </label>
+                
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <select class="form-control" name="category" id="id_category" readonly/>
+                        <option value="{{object.category}}">{{object.category}}</option>
+                    </select>
+                </div>
+            
+            </div>
+        </div>
+        <div class="row m-1">
+            <div class="col-4"style="text-align: end;">
+                <label class="form-label">Date End: </label>
+                
+            </div>
+            <div class="col-4" >
+                <p>{{object.date_end}}</p>
+                
+            </div>
+        </div>
+                
+            <input type="submit" value="Update">
+
+    </form>
+</div>
+{% endblock %}

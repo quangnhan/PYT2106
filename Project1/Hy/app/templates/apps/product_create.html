@@ -1,0 +1,77 @@
+{% extends 'base/base.html'%}
+
+{% block body %}
+<div class="container " style="text-align: center;">
+<h1>Product Create</h1>
+    <form method="post" action="./create" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+    </form>    
+        {% comment %} <form method="post" action="./create" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row m-1 p-1">
+            <div class="col-4"style="text-align: end;">
+                <label class="form-label">Product Name: </label>
+                
+            </div>
+            <div class="col-4" >
+                <input name="name" id="id_name" class="form-control" type="text"/>
+            </div>
+            </div>
+            <div class="row m-1 p-1">
+                <div class="col-4"style="text-align: end;">
+                    <label class="form-label">Price Start: </label>
+                </div>
+                <div class="col-4">
+                    
+                    <input name="price_start" id="id_price_start" class="form-control" type="number" min ="0"/>
+                </div>
+            </div>
+            <div class="row m-1 p-1">
+                <div class="col-4"style="text-align: end;">
+                    <label class="form-label">Image : </label>
+                    
+                </div>
+                <div class="col-4">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="id_imageUrl" name="imageUrl" accept="image/*">
+                        <label class="custom-file-label" for="id_imageUrl">Choose file</label>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row m-1 p-1">
+                <div class="col-4"style="text-align: end;">
+                    <label class="form-label">Category : </label>
+                    
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <select class="form-control" name="category" id="id_category">
+                            {% for category in categorys %}
+                            <option value="{{category.id}}">{{category.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="row m-1">
+                <div class="col-4"style="text-align: end;">
+                    <label class="form-label">Date End: </label>
+                    
+                </div>
+                <div class="col-4" >
+                    
+                    <input name="date_end" id="id_date_end" class="form-control" type="datetime-local"/>
+                </div>
+            </div>
+            
+                <input type="submit" value="Create">
+                
+        </form> {% endcomment %}
+    
+</div>
+{% endblock %}

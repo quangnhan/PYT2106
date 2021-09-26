@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'base/base.html'%}
+
+{% block body %}
+<section>
+<div class="container">
+    <div class="row mb-3 mt-3">
+        <div class="col-3">
+            <select class="form-control" id="category" onchange="get_list_product()">
+            {% for category in list_all_category %}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="col-9">
+        {% comment %} <a class='btn btn-primary float-right' href="{% url 'blog_create' %}">Create</a> {% endcomment %}
+            <a class='btn btn-primary float-right' href="{% url 'product_create' %}">Create</a>
+        </div>
+    </div>
+    <div id="message"></div>
+</div>
+</section>
+
+<script>
+    function get_list_product() {
+    var category_id = $("#category").val();
+
+    $.ajax({
+        url: "{% url 'product_list' %}",
+        method: "GET",
+        data: { 
+            'category_id' : category_id
+        },
+        success: function (result) {
+        $('#message').html(result)
+        },
+        error: function (result) {
+        console.error(result)
+        }
+    });
+    }
+
+    $( document ).ready(function() {
+    get_list_product();
+    });
+</script>
+{% endblock %}
