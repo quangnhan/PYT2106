@@ -74,12 +74,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                     
-                        {{object.id}}<p> Sản phẩm <i style="font-weight: 500;color: green;border: 2px;border-radius: 4px;background-color: #bfc4ffc9;">{{object.name}}</i>
+                        <p> Sản phẩm <i style="font-weight: 500;color: green;border: 2px;border-radius: 4px;background-color: #bfc4ffc9;">{{object.name}}</i>
                         được đăng bán bởi <span style="font-weight: 500 ;border: 2px;border-radius: 4px;background-color: #3aff40;">{{object.user_post}} </span>  với giá khởi điểm 
-                        = <span style="font-size:16px; font-weight:500">${% if product.pricre_start %}
-                            {{object.price_start}}
-                        {% else %}
-                        0
+                        = <span style="font-size:16px; font-weight:500">${% if product.pricre_start %}{{object.price_start}}
+                        {% else %}0
                         {% endif %}
                         vào lúc {{object.date_post|date:'d-m-Y H:i' }}</span></p>
                         

@@ -69,22 +69,24 @@ text-align:left;
     <div class="row products "> 
     {% for product in list_all_product %}
     <div class="col-md-3 "> 
-    <div > <img src="/auctions/media/{{product.imageUrl}}" alt="{{product.imageUrl}}" class="img-circle img-thumbnail zoom"> 
+    <div > <img src="/auctions/media/{{product.imageUrl}}" alt="{{product.imageUrl}}" class="img-circle img-thumbnail zoom">
         <h2>{{product.name}}</h2> 
         <dl class="dl-horizontal"> 
-        {% comment %} {{product.id}} {% endcomment %}
-        <dt>Giá Khởi điểm: </dt> 
+
+        <dt>Giá: </dt> 
         <dd>${% if product.price_start %}
         {{product.price_start}}
         {% else %}
         0
         {% endif %}  </dd> 
+        
+        
         {% comment %} <dt>Bảo hành:</dt> 
         <dd> 12 tháng</dd>  {% endcomment %}
         <dt>Thời hạn:</dt> 
         <dd>{{ product.date_end|date:'d-m-Y H:i' }}</dd> 
         <dt>Ngày giờ hiện tại: </dt> 
-        <dd>{{ myDate|date:'d-m-Y H:i' }}</dd> 
+        <dd>{{ myDate|date:'d-m-Y H:i'  }}</dd> 
         </dl> <a href="{% url 'product_update' product.id %}" class="btn btn-primary" title="Đấu Giá">Auctions »</a> 
     </div> 
     </div> 
