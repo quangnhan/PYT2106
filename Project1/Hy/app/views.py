@@ -3,9 +3,8 @@ from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import Product, Category,UserBuyProduct
-from cms.middleware import user
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from datetime import datetime
 # Create your views here.
 class index(ListView):
     template_name ="apps/index.html"
@@ -15,6 +14,7 @@ class index(ListView):
 class ProductListView(ListView):
     template_name = "apps/product_list.html"
     model = Product
+
     # model = Category
     def get_context_data(self, *args, **kwargs):
         # Get data
@@ -23,9 +23,10 @@ class ProductListView(ListView):
 
         # Get list product by category
         list_all_product = Product.objects.filter(category__id=category_id)
+        myDate = datetime.now()
         context['list_all_product'] = list_all_product
+        context['myDate'] =myDate
         return context
-    
 
 class ProductCreateView(CreateView):
     
@@ -43,6 +44,7 @@ class ProductCreateView(CreateView):
             
             # return HttpResponse('ok') #needs defined as valid url
         return super(ProductCreateView,self).dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         form.instance.user_post = self.request.user
         self.object = form.save()
@@ -65,6 +67,7 @@ class ProductUpdateView(UpdateView):
     template_name = "apps/product_update.html"
     model = Product
     fields = ['name','price_start']
+    # context_object_name = "Product"
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect('login')
@@ -86,25 +89,14 @@ class ProductUpdateView(UpdateView):
             )
             return redirect('homepage')
         return super().post(request,'index')
-    # def form_valid(self, form):
-    #     self.object = form.save()
-    #     return super().form_valid(form)
-    # def form_valid(self, form):
-    #     form.instance.user_post = self.request.user
-    #     form.instance.price_start =self.request.get
-    #     self.object = form.save()
-    #     UserBuyProduct.objects.create(product_id=self.object.pk,
-    #     Price_Final=self.object.price_start,
-    #     user_buy=self.request.user
-    #     )
-    #     return super().form_valid(form)
-        # Productbuy = UserBuyProduct.objects.filter(product_id = self.object.pk).order_by('-date')
-    # fields = ['name','price_start','user_post','imageUrl','date_post']
-    # def get_context_data(self, *args, **kwargs):
-    #     Product_buy = UserBuyProduct.objects.filter(product_id = self.object.pk)
-    #     context = super().get_context_data(*args, **kwargs)
-    #     context['Product_buy'] = Product_buy
-    #     return context
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        Product_buy = UserBuyProduct.objects.filter(product_id = self.object.pk).last()
+        Product_buy_all = UserBuyProduct.objects.filter(product_id = self.object.pk).order_by('id')
+        context['Product_buy'] = Product_buy
+        context['Product_buy_all'] = Product_buy_all
+        return context
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('homepage')
