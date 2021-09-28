@@ -1,0 +1,106 @@
+{% extends 'base/base.html'%}
+
+{% block body %}
+<div class="row">
+    <div class="col-6">
+        <div class="container" style="text-align: center;">
+            <h1>Đấu Giá</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <img src="/auctions/media/{{object.imageUrl}}"style="weight:150px;height:150px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="{{object.imageUrl}}">
+                <div class="row m-1 p-1">
+                <input name="id" value="{{object.id}}" hidden>
+                    <div class="col-4"style="text-align: end;">
+                        <label class="form-label">Product Name: </label>
+                        
+                    </div>
+                    <div class="col-4" >
+                        <input name="name" value="{{object.name}}" id="id_name" class="form-control" type="text" readonly/>
+                    </div>
+                </div>
+                <div class="row m-1 p-1">
+                    <div class="col-4"style="text-align: end;">
+                        <label class="form-label">Price : </label>
+                    </div>
+                    {% if product.id == Product_buy.product_id  %}
+                        <div class="col-4">
+                            
+                            <input name="price" value="{{Product_buy.Price_Final}}" id="id_price_start" class="form-control" type="number" min ="{{Product_buy.Price_Final}}"/>
+                        </div>
+                    {% else %}
+                        <div class="col-4">
+                            <input name="price" value="{{product.price_start}}" id="id_price_start" class="form-control" type="number" min ="{{product.price_start}}"/>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+                <div class="row m-1 p-1">
+                    <div class="col-4"style="text-align: end;">
+                        <label class="form-label">Category : </label>
+                        
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <select class="form-control" name="category" id="id_category" readonly/>
+                                <option value="{{object.category}}">{{object.category}}</option>
+                            </select>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="col-4"style="text-align: end;">
+                        <label class="form-label">Date End: </label>
+                        
+                    </div>
+                    <div class="col-4" >
+                        <p>{{ object.date_end|date:'d-m-Y H:i' }}</p>
+                        
+                    </div>
+                </div>
+                        
+                <div class="row mt-2">
+                    <div class="col-6" style="text-align:end;">
+                        <button  class="btn btn-primary">Đấu Giá</button>
+                    </div>
+                    <div class="col-6"style="text-align: left;">
+                        <a href="{% url 'homepage' %}" class="btn btn-info" role="button">Canel</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="container">
+        <div class="card shadow mt-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Auctions List</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                    
+                        <p> Sản phẩm <i style="font-weight: 500;color: green;border: 2px;border-radius: 4px;background-color: #bfc4ffc9;">{{object.name}}</i>
+                        được đăng bán bởi <span style="font-weight: 500 ;border: 2px;border-radius: 4px;background-color: #3aff40;">{{object.user_post}} </span>  với giá khởi điểm 
+                        = <span style="font-size:16px; font-weight:500">
+                        ${% if object.price_start %}
+                            {{ object.price_start }}
+                        {% else %}
+                        0
+                        {% endif %}
+                        vào lúc {{object.date_post|date:'d-m-Y H:i' }}</span></p>
+                        
+                        {% for Product_buy_all in Product_buy_all %}
+                            <p> Sản phẩm <i style="font-weight: 500;color: green;border: 2px;border-radius: 4px;background-color: #bfc4ffc9;">{{object.name}}</i>
+                        được đấu giá bởi <span style="font-weight: 500 ;border: 2px;border-radius: 4px;background-color: #3aff40;">{{Product_buy_all.user_buy}} </span>  với giá mới 
+                        = <span style="font-size:16px; font-weight:500">${{Product_buy_all.Price_Final}}
+                        vào lúc {{Product_buy_all.date_buy|date:'d-m-Y H:i' }}</span></p></span></p>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>    
+{% endblock %}

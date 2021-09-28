@@ -1,0 +1,96 @@
+{% comment %} <style>
+    .zoom {
+    transition: transform .3s;
+    width: 100px;
+    height: 100px;
+
+}
+
+    .zoom:hover {
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+}
+</style> {% endcomment %}
+<style type="text/css">
+.products { 
+padding: 20px 0;    
+text-align: center;
+}
+
+.products &gt; div &gt; div {   
+padding: 10px;  
+border: 1px solid transparent;  
+border-radius: 4px; 
+transition: 0.2s;
+}
+    .zoom {
+    transition: transform .3s;
+    width: 150px;
+    height: 150px;
+
+}
+
+    .zoom:hover {
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+}
+.products &gt; div:hover &gt; div { 
+margin-top: -10px;  
+border: 1px solid rgb(200, 200, 200);   
+box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px; 
+background: rgba(200, 200, 200, 0.1);   
+transition: 0.5s;
+}
+
+.dl-horizontal dt { 
+float: left;    
+width: 120px;   
+overflow: hidden;   
+clear: left;    
+text-align: right;  
+text-overflow: ellipsis;    
+white-space: nowrap;
+}
+.dl-horizontal dd { 
+margin-left: 140px; 
+text-align:left;
+}
+</style>
+<section>
+
+{% comment %} <div class="w3-container w3-teal">
+
+</div> {% endcomment %}
+<h2 align="center">Products All</h2>
+<div class="container"> 
+
+    <div class="row products "> 
+    {% for product in list_all_product %}
+    <div class="col-md-3 "> 
+    <div > <img src="/auctions/media/{{product.imageUrl}}" alt="{{product.imageUrl}}" class="img-circle img-thumbnail zoom">
+        <h2>{{product.name}}</h2> 
+        <dl class="dl-horizontal"> 
+        <dt>Giá: </dt>
+        <dd>
+        ${% if product.id == product_buy.product_id %}
+                {{product_buy.Price_Final}}
+                {% else %}
+                    {{product.price_start}}
+                {% endif %}  
+        </dd>
+        {% comment %} <dt>Bảo hành:</dt> 
+        <dd> 12 tháng</dd>  {% endcomment %}
+        <dt>Thời hạn:</dt> 
+        <dd>{{ product.date_end|date:'d-m-Y H:i' }}</dd> 
+        <dt>Ngày giờ hiện tại: </dt> 
+        <dd>{{ myDate|date:'d-m-Y H:i'  }}</dd> 
+        </dl> <a href="{% url 'product_update' product.id %}" class="btn btn-primary" title="Đấu Giá">Auctions »</a> 
+    </div> 
+    </div> 
+        {% endfor %}
+    </div>
+
+</div> 
+</section>
