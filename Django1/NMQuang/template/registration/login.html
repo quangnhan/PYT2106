@@ -2,11 +2,11 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
-<h1 class="text-light">Create Blog</h1>
+<h1 class="text-light">Login</h1>
 
 <form class="text-light" method="post">
   {% csrf_token %}
   {{ form|crispy }}
-  <input type="submit" value="Create">
+  <input type="submit" value="Log in">
 </form>
 {% endblock %}
