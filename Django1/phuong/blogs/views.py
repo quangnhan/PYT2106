@@ -5,16 +5,17 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Blog, Category
 # Create your views here.
 
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
     template_name = "apps/blogs/category_list.html"
     model = Category
     context_object_name = 'list_all_category'
 
-class BlogListView(ListView):
+class BlogListView(LoginRequiredMixin, ListView):
     template_name = "apps/blogs/blog_list.html"
     model = Blog
 
@@ -28,11 +29,11 @@ class BlogListView(ListView):
         context['list_all_blog'] = list_all_blog
         return context
 
-class BlogDetailView(DetailView):
+class BlogDetailView(LoginRequiredMixin, DetailView):
     template_name = "apps/blogs/blog_detail.html"
     model = Blog
 
-class BlogCreateView(CreateView):
+class BlogCreateView(LoginRequiredMixin, CreateView):
     template_name = "apps/blogs/blog_create.html"
     model = Blog
     fields = ['name', 'description', 'category']
@@ -40,7 +41,7 @@ class BlogCreateView(CreateView):
     def get_success_url(self, **kwargs):      
         return reverse_lazy('blog_detail', args = (self.object.id,))
 
-class BlogUpdateView(UpdateView):
+class BlogUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "apps/blogs/blog_update.html"
     model = Blog
     fields = ['name', 'description', 'category']
@@ -48,7 +49,7 @@ class BlogUpdateView(UpdateView):
     def get_success_url(self, **kwargs):      
         return reverse_lazy('blog_detail', args = (self.object.id,))
 
-class BlogDeteleView(DeleteView):
+class BlogDeteleView(LoginRequiredMixin, DeleteView):
     template_name = "apps/blogs/blog_delete.html"
     model = Blog
     success_url = reverse_lazy('category_list')

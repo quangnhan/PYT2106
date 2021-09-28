@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
-from django.views.generic import Lo
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
-class HomePageView(TemplateView):
+class HomePageView(LoginRequiredMixin, TemplateView):
     template_name = "apps/pages/home.html"
