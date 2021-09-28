@@ -23,8 +23,10 @@ class ProductListView(ListView):
 
         # Get list product by category
         list_all_product = Product.objects.filter(category__id=category_id)
+        product_buy = UserBuyProduct.objects.filter().last() #chưa lay được 
         myDate = datetime.now()
         context['list_all_product'] = list_all_product
+        context['product_buy'] = product_buy
         context['myDate'] =myDate
         return context
 
@@ -41,8 +43,7 @@ class ProductCreateView(CreateView):
             template_name = "apps/product_create.html"
             model = Product
             fields = ['name','price_start','category','date_end','imageUrl']
-            
-            # return HttpResponse('ok') #needs defined as valid url
+
         return super(ProductCreateView,self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -56,12 +57,6 @@ class ProductCreateView(CreateView):
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('homepage')
-
-    # def get_context_data(self, *args, **kwargs):
-    #     categorys = Category.objects.filter()
-    #     context = super().get_context_data(*args, **kwargs)
-    #     context['categorys'] = categorys
-    #     return context
 
 class ProductUpdateView(UpdateView):
     template_name = "apps/product_update.html"
