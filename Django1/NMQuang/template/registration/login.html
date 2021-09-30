@@ -8,10 +8,10 @@
     <form class="text-light" method="post">
       {% csrf_token %}
       {{ form|crispy }}
-      <input class='btn btn-primary' type="submit" value="Log in">
+      <input class='btn btn-dark' type="submit" value="Log in">
     </form>
     <div>
-      <a class='btn btn-warning' href="{% url 'password_reset' %}">Reset Password</a>
+      <a class='btn btn-info' href="{% url 'password_reset' %}">Reset Password</a>
     </div>
   </div>
 </div>

@@ -3,10 +3,13 @@
 
 {% block body %}
 <h1 class="text-light">Sign Up</h1>
-
-<form class="text-light" method="post">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <input type="submit" value="Sign Up">
-</form>
+<div class="row justify-content-center">
+  <div class="col-7">
+    <form class="text-light" method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input class='btn btn-light' type="submit" value="Sign Up">
+    </form>
+    </div>
+  </div>
 {% endblock %}
