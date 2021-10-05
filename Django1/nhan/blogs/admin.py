@@ -5,7 +5,7 @@ from .models import Blog, Category
 
 class BlogAdmin(admin.ModelAdmin):
     model = Blog
-    list_display = ['name', 'description', 'category']
+    list_display = ['name', 'description', 'category', 'author']
 
 admin.site.register(Blog, BlogAdmin) 
 admin.site.register(Category) 
