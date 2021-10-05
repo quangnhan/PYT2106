@@ -2,5 +2,11 @@ from django.contrib import admin
 from .models import Blog, Category
 
 # Register your models here.
-admin.site.register(Blog)
+
+class BlogAdmin(admin.ModelAdmin):
+    model = Blog
+    list_display = ['name', 'description', 'category', 'author']
+
+
+admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category)

@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'learn-django.lotussense.live']
 
+# CUSTOM USER MODEL
+AUTH_USER_MODEL = 'account.CustomUser'
 
 # Application definition
 
