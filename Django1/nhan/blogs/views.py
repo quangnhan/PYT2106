@@ -41,6 +41,10 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self, **kwargs):      
         return reverse_lazy('blog_detail', args = (self.object.id,))
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 class BlogUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "apps/blogs/blog_update.html"
     model = Blog

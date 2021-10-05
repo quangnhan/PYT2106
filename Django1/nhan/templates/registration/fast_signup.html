@@ -1,0 +1,13 @@
+{% extends 'base/base.html'%}
+
+{% load crispy_forms_tags %} 
+
+{% block body %}
+<h1>Fast Signup</h1>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input class="btn btn-dark" type="submit" value="Signup">
+</form>
+{% endblock %}
