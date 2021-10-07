@@ -1,5 +1,6 @@
 from django.shortcuts import redirect #  , render
 from django.urls import reverse_lazy, reverse
+from django.contrib import messages
 # from django.http import HttpResponse
 # from django.views.generic import TemplateView
 from django.views.generic.list import ListView
@@ -16,6 +17,9 @@ class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     permission_required = ('blogs.view_category',)
 
     def handle_no_permission(self):
+        messages.success(self.request, "Success message")
+        messages.warning(self.request, "Warning message")
+        messages.error(self.request, "Error message")
         return redirect(reverse('home'))
 
 
