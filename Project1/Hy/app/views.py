@@ -23,7 +23,10 @@ class ProductListView(ListView):
 
         # Get list product by category
         list_all_product = Product.objects.filter(category__id=category_id)
-        product_buy = UserBuyProduct.objects.filter().last() #chưa lay được 
+        for product in list_all_product:
+            product_buy = UserBuyProduct.objects.filter(product=product).last() #chưa lay được 
+            product.product_buy = product_buy
+        product.product_buy.Price_Final
         myDate = datetime.now()
         context['list_all_product'] = list_all_product
         context['product_buy'] = product_buy

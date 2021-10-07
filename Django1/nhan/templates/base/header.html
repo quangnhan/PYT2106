@@ -23,6 +23,9 @@
   </div>
 
   {% else %}
-  <a class="btn btn-light ml-auto" href="{% url 'signup' %}">Signup</a>
+  <div class="ml-auto">
+    <a class="btn btn-light" href="{% url 'login' %}">Login</a>
+    <a class="btn btn-light" href="{% url 'signup' %}">Signup</a>
+  </div>
   {% endif %}
 </nav>
