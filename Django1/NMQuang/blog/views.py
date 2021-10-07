@@ -10,8 +10,8 @@ from .models import Blog, Category
 
 
 class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
-    template_name = "apps/blog/category_list.html"
     model = Category
+    template_name = "apps/blog/category_list.html"
     context_object_name = 'list_all_category'
     permission_required = ('blogs.view_category',)
 
@@ -19,9 +19,10 @@ class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         return redirect(reverse('home'))
 
 
-class BlogListView(LoginRequiredMixin, ListView):
-    template_name = "apps/blog/blog_list.html"
+class BlogListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Blog
+    template_name = "apps/blog/blog_list.html"
+    permission_required = ('blogs.view_blog',)
 
     def get_context_data(self, *args, **kwargs):
         # Get data
@@ -45,14 +46,15 @@ class BlogListView(LoginRequiredMixin, ListView):
 #         return HttpResponse(f"Create blog {name} success")
 
 
-class BlogDetailView(LoginRequiredMixin, DetailView):
-    template_name = "apps/blog/blog_detail.html"
+class BlogDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Blog
+    template_name = "apps/blog/blog_detail.html"
+    permission_required = ('blogs.view_blog',)
 
 
 class BlogCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
-    template_name = "apps/blog/blog_create.html"
     model = Blog
+    template_name = "apps/blog/blog_create.html"
     fields = ['name', 'description', 'category']
     permission_required = ('blogs.add_category',)
 
@@ -67,16 +69,18 @@ class BlogCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         return redirect(reverse('home'))
        
 
-class BlogUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = "apps/blog/blog_update.html"
+class BlogUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Blog
+    template_name = "apps/blog/blog_update.html"
     fields = ['name', 'description', 'category']
+    permission_required = ('blogs.change_blog',)
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('blog_detail', args = (self.object.id,))
 
 
-class BlogDeteleView(LoginRequiredMixin, DeleteView):
-    template_name = "apps/blog/blog_delete.html"
+class BlogDeteleView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Blog
+    template_name = "apps/blog/blog_delete.html"
     success_url = reverse_lazy('category_list')
+    permission_required = ('blogs.delete_blog',)
