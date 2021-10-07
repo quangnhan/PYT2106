@@ -1,18 +1,22 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.shortcuts import redirect #  , render
+from django.urls import reverse_lazy, reverse
+# from django.http import HttpResponse
+# from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from .models import Blog, Category
 
 
-class CategoryListView(LoginRequiredMixin, ListView):
+class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     template_name = "apps/blog/category_list.html"
     model = Category
     context_object_name = 'list_all_category'
+    permission_required = ('blogs.view_category',)
+
+    def handle_no_permission(self):
+        return redirect(reverse('home'))
 
 
 class BlogListView(LoginRequiredMixin, ListView):
@@ -46,15 +50,22 @@ class BlogDetailView(LoginRequiredMixin, DetailView):
     model = Blog
 
 
-class BlogCreateView(LoginRequiredMixin, CreateView):
+class BlogCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = "apps/blog/blog_create.html"
     model = Blog
     fields = ['name', 'description', 'category']
-    # success_url = reverse_lazy('category_list')
+    permission_required = ('blogs.add_category',)
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('blog_detail', args = (self.object.id,))
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def handle_no_permission(self):
+        return redirect(reverse('home'))
+       
 
 class BlogUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "apps/blog/blog_update.html"
