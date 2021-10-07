@@ -10,9 +10,11 @@
       </select>
     </div>
     <div class="col-9">
+      {% if perms.blogs.add_blog %}
       <a class='btn btn-dark float-right' href="{% url 'blog_create' %}">
         <i class="fas fa-plus" height="3px"></i> Create
       </a>
+      {% endif %}
     </div>
   </div>
   <div id="message"></div>

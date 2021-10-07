@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from .models import Blog, Category
 # Create your views here.
 
@@ -67,11 +67,21 @@ class BlogUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     def get_success_url(self, **kwargs):      
         return reverse_lazy('blog_detail', args = (self.object.id,))
 
-class BlogDeteleView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+class BlogDeteleView(LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Blog
     template_name = "apps/blogs/blog_delete.html"
     success_url = reverse_lazy('category_list')
     permission_required = ('blogs.delete_blog',)
+
+    def test_func(self):
+        blog = self.get_object()
+        if blog.author != self.request.user:
+            messages.error(self.request, 'You are not author of this blog!')
+            return False 
+        return True
+
+    def handle_no_permission(self):
+        return redirect(reverse('category_list'))
 
 # ==============================================================================================
 class BlogCreateV2View(TemplateView):

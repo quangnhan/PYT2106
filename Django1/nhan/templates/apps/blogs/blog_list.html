@@ -18,18 +18,22 @@
         >
           <i class="far fa-eye"></i>
         </a>
+        {% if perms.blogs.change_blog %}
         <a class="btn btn-warning" 
           href="{% url 'blog_update' pk=blog.id %}"
           data-toggle="tooltip" data-placement="top" title="Update"
         >
           <i class="fas fa-wrench"></i>
         </a>
+        {% endif %}
+        {% if perms.blogs.delete_blog %}
         <a class="btn btn-danger" 
           href="{% url 'blog_delete' pk=blog.id %}"
           data-toggle="tooltip" data-placement="top" title="Delete"
         >
           <i class="fas fa-trash"></i>
         </a>
+        {% endif %}
       </td>
     </tr>
     {% endfor %}
