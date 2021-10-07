@@ -1,19 +1,22 @@
-from django.db import models
-from django.shortcuts import render, resolve_url
+from django.urls import reverse_lazy, reverse
+from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from .models import Blog, Category
 # Create your views here.
 
-class CategoryListView(LoginRequiredMixin, ListView):
-    template_name = "apps/blogs/category_list.html"
+class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Category
+    template_name = "apps/blogs/category_list.html"
     context_object_name = 'list_all_category'
+    permission_required = ('blogs.view_category',)
+
+    def handle_no_permission(self):
+        return redirect(reverse('home'))
 
 class BlogListView(LoginRequiredMixin, ListView):
     template_name = "apps/blogs/blog_list.html"
@@ -33,10 +36,11 @@ class BlogDetailView(LoginRequiredMixin, DetailView):
     template_name = "apps/blogs/blog_detail.html"
     model = Blog
 
-class BlogCreateView(LoginRequiredMixin, CreateView):
-    template_name = "apps/blogs/blog_create.html"
+class BlogCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Blog
+    template_name = "apps/blogs/blog_create.html"
     fields = ['name', 'description', 'category']
+    permission_required = ('blogs.add_category',)
 
     def get_success_url(self, **kwargs):      
         return reverse_lazy('blog_detail', args = (self.object.id,))
@@ -45,6 +49,9 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def handle_no_permission(self):
+        return redirect(reverse('home'))
+        
 class BlogUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "apps/blogs/blog_update.html"
     model = Blog

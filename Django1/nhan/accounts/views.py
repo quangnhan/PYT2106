@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView
 from .forms import FastSignupForm
@@ -18,5 +19,13 @@ class FastSignupView(FormView):
         return super().form_invalid(form)
 
     def form_valid(self, form):
-        print("form_valid", form.cleaned_data)
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password']
+
+        get_user_model().objects.create_user(
+            username=email,
+            email=email,
+            password=password
+        )
+
         return super().form_valid(form)
