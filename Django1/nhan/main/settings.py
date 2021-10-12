@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # apps
-    'accounts',
+    'accounts.apps.AccountsConfig',
     'blogs',
     'pages',
 
@@ -135,7 +135,7 @@ LOGOUT_REDIRECT_URL = 'login'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'quangnhan145@gmail.com'
-EMAIL_HOST_PASSWORD = 'eyueootjebhnpqga'
+EMAIL_HOST_PASSWORD = 'yhsafziemqtjjmim'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

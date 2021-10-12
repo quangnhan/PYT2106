@@ -75,9 +75,14 @@ class BlogDeteleView(LoginRequiredMixin, PermissionRequiredMixin, UserPassesTest
 
     def test_func(self):
         blog = self.get_object()
+
+        if self.request.user.is_superuser:
+            return True
+
         if blog.author != self.request.user:
             messages.error(self.request, 'You are not author of this blog!')
-            return False 
+            return False
+            
         return True
 
     def handle_no_permission(self):
