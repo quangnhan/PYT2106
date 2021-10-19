@@ -2,8 +2,10 @@ from django.db import models
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Product
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required
 def product_list(request):
     product_list = []
     
