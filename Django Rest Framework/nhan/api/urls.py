@@ -4,14 +4,14 @@ from rest_framework.routers import SimpleRouter
 from .views import ProductAPIView, ProductAPIDetail, ProductAPIViewset, BlogAPIViewset, TestApiView
 
 urlpatterns = [
-    # path('', ProductAPIView.as_view()),
-    # path('<int:pk>', ProductAPIDetail.as_view()),
+    path('', ProductAPIView.as_view()),
+    path('<int:pk>', ProductAPIDetail.as_view()),
     path('test', TestApiView.as_view()),
 ]
 
-# router = SimpleRouter()
+router = SimpleRouter()
 
-# router.register('product', ProductAPIViewset, basename='products')
-# router.register('blog', BlogAPIViewset, basename='blogs')
+router.register('product', ProductAPIViewset, basename='products')
+router.register('blog', BlogAPIViewset, basename='blogs')
 
-# urlpatterns = router.urls
+urlpatterns += router.urls
