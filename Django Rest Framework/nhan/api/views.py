@@ -16,6 +16,6 @@ class ProductAPIDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
 
 class ProductAPIViewset(viewsets.ModelViewSet):
-    permission_classes = (DjangoModelPermissions,)
+    # permission_classes = (DjangoModelPermissions,)
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
