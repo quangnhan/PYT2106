@@ -20,6 +20,7 @@ class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         messages.success(self.request, "You don't have permission to view Category List")
         messages.warning(self.request, "You don't have permission to view Category List")
         messages.error(self.request, "You don't have permission to view Category List")
+        Log().log("error", "You don't have permission to view Category List")
         return redirect(reverse('home'))
 
 class BlogListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
