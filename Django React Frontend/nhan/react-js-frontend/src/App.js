@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const list_blog = [
+const LIST_BLOG = [
   {
     "name": "Blog 1",
     "content": "Content BLog 1",
@@ -13,6 +15,19 @@ const list_blog = [
 ]
 
 function App() {
+  const [list_blog, setListBLog] = useState([])
+
+  useEffect(() => {
+    axios
+    .get('http://127.0.0.1:8000/api/blog')
+    .then(res => {
+      setListBLog(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
+
   return (
     <div >
       {
